@@ -1,0 +1,153 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/level/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/guard/guard.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/goal/goal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/level/level.gd" type="Script" id=6]
+[ext_resource path="res://pause.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/guard-dog/doggo.tscn" type="PackedScene" id=8]
+
+[node name="world" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 6 )
+next_level = "res://assets/level/level-11.tscn"
+this_level = "res://assets/level/level-10.tscn"
+
+[node name="goal" parent="." instance=ExtResource( 5 )]
+pause_mode = 1
+position = Vector2( 264, 104 )
+z_index = 1
+
+[node name="Navigation" type="Navigation2D" parent="."]
+pause_mode = 1
+
+[node name="TileMap" type="TileMap" parent="Navigation"]
+pause_mode = 1
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 327692, 4, 0, 327693, 4, 0, 327694, 4, 0, 327695, 4, 0, 327696, 4, 0, 327697, 4, 0, 327698, 4, 0, 327699, 4, 0, 327700, 4, 0, 393228, 4, 0, 393229, 1, 8, 393230, 1, 8, 393231, 1, 8, 393232, 1, 8, 393233, 1, 8, 393234, 1, 8, 393235, 1, 8, 393236, 4, 0, 458764, 4, 0, 458765, 1, 8, 458766, 1, 8, 458767, 1, 8, 458768, 1, 8, 458769, 1, 8, 458770, 1, 8, 458771, 1, 8, 458772, 4, 0, 524300, 4, 0, 524301, 1, 8, 524302, 1, 8, 524303, 1, 8, 524304, 1, 8, 524305, 1, 8, 524306, 1, 8, 524307, 1, 8, 524308, 4, 0, 589836, 4, 0, 589837, 1, 8, 589838, 1, 8, 589839, 4, 0, 589840, 1, 8, 589841, 4, 0, 589842, 1, 8, 589843, 1, 8, 589844, 4, 0, 655372, 4, 0, 655373, 1, 8, 655374, 1, 8, 655375, 4, 0, 655376, 1, 8, 655377, 4, 0, 655378, 1, 8, 655379, 1, 8, 655380, 4, 0, 720908, 4, 0, 720909, 1, 8, 720910, 1, 8, 720911, 1, 8, 720912, 1, 8, 720913, 1, 8, 720914, 1, 8, 720915, 1, 8, 720916, 4, 0, 786444, 4, 0, 786445, 1, 8, 786446, 1, 8, 786447, 1, 8, 786448, 1, 8, 786449, 1, 8, 786450, 1, 8, 786451, 1, 8, 786452, 4, 0, 851980, 4, 0, 851981, 1, 8, 851982, 1, 8, 851983, 4, 0, 851984, 4, 0, 851985, 4, 0, 851986, 1, 8, 851987, 1, 8, 851988, 4, 0, 917516, 4, 0, 917517, 1, 8, 917518, 1, 8, 917519, 1, 8, 917520, 1, 8, 917521, 1, 8, 917522, 1, 8, 917523, 1, 8, 917524, 4, 0, 983052, 4, 0, 983053, 1, 8, 983054, 1, 8, 983055, 1, 8, 983056, 1, 8, 983057, 1, 8, 983058, 1, 8, 983059, 1, 8, 983060, 4, 0, 1048588, 4, 0, 1048589, 1, 8, 1048590, 1, 8, 1048591, 4, 0, 1048592, 4, 0, 1048593, 4, 0, 1048594, 1, 8, 1048595, 1, 8, 1048596, 4, 0, 1114124, 4, 0, 1114125, 1, 8, 1114126, 1, 8, 1114127, 4, 0, 1114128, 4, 0, 1114129, 4, 0, 1114130, 1, 8, 1114131, 1, 8, 1114132, 4, 0, 1179660, 4, 0, 1179661, 1, 8, 1179662, 1, 8, 1179663, 1, 8, 1179664, 1, 8, 1179665, 1, 8, 1179666, 1, 8, 1179667, 1, 8, 1179668, 4, 0, 1245196, 4, 0, 1245197, 1, 8, 1245198, 1, 8, 1245199, 1, 8, 1245200, 1, 8, 1245201, 1, 8, 1245202, 1, 8, 1245203, 1, 8, 1245204, 4, 0, 1310732, 4, 0, 1310733, 4, 0, 1310734, 4, 0, 1310735, 4, 0, 1310736, 4, 0, 1310737, 4, 0, 1310738, 4, 0, 1310739, 4, 0, 1310740, 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+pause_mode = 1
+position = Vector2( 264, 304 )
+z_index = 1
+
+[node name="Points" type="Node2D" parent="."]
+pause_mode = 1
+
+[node name="Position2D" type="Position2D" parent="Points"]
+pause_mode = 1
+position = Vector2( 224, 248 )
+rotation = 1.5708
+
+[node name="Position2D2" type="Position2D" parent="Points"]
+pause_mode = 1
+position = Vector2( 224, 184 )
+rotation = 1.5708
+
+[node name="Position2D3" type="Position2D" parent="Points"]
+pause_mode = 1
+position = Vector2( 304, 184 )
+rotation = 1.5708
+
+[node name="Position2D4" type="Position2D" parent="Points"]
+pause_mode = 1
+position = Vector2( 304, 248 )
+rotation = 1.5708
+
+[node name="Points-B" type="Node2D" parent="."]
+pause_mode = 1
+
+[node name="Position2D" type="Position2D" parent="Points-B"]
+pause_mode = 1
+position = Vector2( 304, 232 )
+rotation = -1.5708
+
+[node name="Position2D2" type="Position2D" parent="Points-B"]
+pause_mode = 1
+position = Vector2( 304, 200 )
+rotation = -1.5708
+
+[node name="Position2D3" type="Position2D" parent="Points-B"]
+pause_mode = 1
+position = Vector2( 224, 200 )
+rotation = -1.5708
+
+[node name="Position2D4" type="Position2D" parent="Points-B"]
+pause_mode = 1
+position = Vector2( 224, 232 )
+rotation = -1.5708
+
+[node name="Points-C" type="Node2D" parent="."]
+pause_mode = 1
+visible = false
+
+[node name="Position2D" type="Position2D" parent="Points-C"]
+pause_mode = 1
+position = Vector2( 8, 128 )
+rotation = 3.14159
+
+[node name="Position2D2" type="Position2D" parent="Points-C"]
+pause_mode = 1
+position = Vector2( 56, 128 )
+rotation = 3.14159
+
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
+position = Vector2( 224, 248 )
+rotation = 3.14159
+z_index = 1
+wait_time = 1.0
+
+[node name="Enemy-B" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
+position = Vector2( 304, 248 )
+rotation = 3.14159
+wait_time = 1.0
+path_name = "Points-B"
+
+[node name="Enemy-C" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
+visible = false
+position = Vector2( 64, 112 )
+rotation = -1.5708
+wait_time = 0.5
+disabled = true
+path_name = "Points-C"
+
+[node name="doggo" parent="." instance=ExtResource( 8 )]
+pause_mode = 1
+position = Vector2( 312, 104 )
+rotation = 0.0174533
+restricted = true
+max_degrees = 90
+min_degrees = 1
+
+[node name="doggo2" parent="." instance=ExtResource( 8 )]
+pause_mode = 1
+position = Vector2( 216, 104 )
+rotation = -0.0174533
+speed = -40
+restricted = true
+max_degrees = -90
+min_degrees = -1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="pause" parent="CanvasLayer" instance=ExtResource( 7 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+[connection signal="spotted" from="Enemy" to="." method="on_spotted"]
+[connection signal="spotted" from="Enemy-B" to="." method="on_spotted"]
+[connection signal="spotted" from="Enemy-C" to="." method="on_spotted"]
+[connection signal="spotted" from="doggo" to="." method="on_spotted"]
+[connection signal="spotted" from="doggo2" to="." method="on_spotted"]
+[connection signal="finished" from="sfx" to="." method="_on_sfx_finished"]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/level/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/guard-dog/doggo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/goal/goal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/level/level.gd" type="Script" id=6]
+[ext_resource path="res://pause.tscn" type="PackedScene" id=7]
+
+[node name="world" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 6 )
+next_level = "res://assets/level/level-06.tscn"
+this_level = "res://assets/level/level-05.tscn"
+
+[node name="goal" parent="." instance=ExtResource( 5 )]
+pause_mode = 1
+position = Vector2( 56, -54.4028 )
+z_index = 1
+
+[node name="Navigation" type="Navigation2D" parent="."]
+pause_mode = 1
+
+[node name="TileMap" type="TileMap" parent="Navigation"]
+pause_mode = 1
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -262149, 4, 0, -262148, 4, 0, -262147, 4, 0, -262146, 4, 0, -262145, 4, 0, -327680, 4, 0, -327679, 4, 0, -327678, 4, 0, -327677, 4, 0, -327676, 4, 0, -196613, 4, 0, -196612, 1, 8, -196611, 1, 8, -196610, 1, 8, -196609, 1, 8, -262144, 1, 8, -262143, 1, 8, -262142, 1, 8, -262141, 1, 8, -262140, 4, 0, -131077, 4, 0, -131076, 1, 8, -131075, 1, 8, -131074, 4, 0, -131073, 1, 8, -196608, 1, 8, -196607, 4, 0, -196606, 1, 8, -196605, 1, 8, -196604, 4, 0, -65541, 4, 0, -65540, 1, 8, -65539, 4, 0, -65538, 1, 8, -65537, 1, 8, -131072, 1, 8, -131071, 1, 8, -131070, 4, 0, -131069, 1, 8, -131068, 4, 0, -5, 4, 0, -4, 1, 8, -3, 1, 8, -2, 1, 8, -1, 1, 8, -65536, 1, 8, -65535, 1, 8, -65534, 1, 8, -65533, 1, 8, -65532, 4, 0, 65531, 4, 0, 65532, 1, 8, 65533, 1, 8, 65534, 1, 8, 65535, 1, 8, 0, 1, 8, 1, 1, 8, 2, 1, 8, 3, 1, 8, 4, 4, 0, 131067, 4, 0, 131068, 1, 8, 131069, 4, 0, 131070, 1, 8, 131071, 1, 8, 65536, 1, 8, 65537, 1, 8, 65538, 4, 0, 65539, 1, 8, 65540, 4, 0, 196603, 4, 0, 196604, 1, 8, 196605, 1, 8, 196606, 4, 0, 196607, 1, 8, 131072, 1, 8, 131073, 4, 0, 131074, 1, 8, 131075, 1, 8, 131076, 4, 0, 262139, 4, 0, 262140, 1, 8, 262141, 1, 8, 262142, 1, 8, 262143, 1, 8, 196608, 1, 8, 196609, 1, 8, 196610, 1, 8, 196611, 1, 8, 196612, 4, 0, 327675, 4, 0, 327676, 4, 0, 327677, 4, 0, 327678, 4, 0, 327679, 4, 0, 262144, 4, 0, 262145, 4, 0, 262146, 4, 0, 262147, 4, 0, 262148, 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+pause_mode = 1
+position = Vector2( -48, 56 )
+z_index = 1
+
+[node name="doggo" parent="." instance=ExtResource( 3 )]
+pause_mode = 1
+speed = 60
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="pause" parent="CanvasLayer" instance=ExtResource( 7 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+[connection signal="spotted" from="doggo" to="." method="on_spotted"]
+[connection signal="finished" from="sfx" to="." method="_on_sfx_finished"]

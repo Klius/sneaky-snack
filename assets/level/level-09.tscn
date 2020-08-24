@@ -1,0 +1,165 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/level/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/light/light.png" type="Texture" id=3]
+[ext_resource path="res://assets/guard/guard.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/goal/goal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/level/level.gd" type="Script" id=6]
+[ext_resource path="res://pause.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/guard-dog/doggo.tscn" type="PackedScene" id=8]
+
+[node name="world" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 6 )
+next_level = "res://assets/level/level-10.tscn"
+this_level = "res://assets/level/level-09.tscn"
+
+[node name="goal" parent="." instance=ExtResource( 5 )]
+pause_mode = 1
+position = Vector2( -64, 63.7357 )
+z_index = 1
+
+[node name="Light2D" type="Light2D" parent="."]
+pause_mode = 1
+visible = false
+position = Vector2( 24, 12 )
+texture = ExtResource( 3 )
+color = Color( 0.952941, 0.917647, 0.364706, 1 )
+energy = 0.5
+range_height = 24.0
+shadow_enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Navigation" type="Navigation2D" parent="."]
+pause_mode = 1
+
+[node name="TileMap" type="TileMap" parent="Navigation"]
+pause_mode = 1
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -196617, 4, 0, -131082, 4, 0, -131080, 4, 0, -196608, 4, 0, -196607, 4, 0, -65546, 4, 0, -65544, 4, 0, -65537, 4, 0, -131071, 4, 0, -10, 4, 0, -8, 4, 0, -2, 4, 0, -65536, 4, 0, 65526, 4, 0, 65528, 4, 0, 65534, 4, 0, 65535, 4, 0, 131062, 4, 0, 131064, 4, 0, 131070, 4, 0, 131071, 4, 0, 196598, 4, 0, 196599, 4, 0, 196600, 4, 0, 196601, 4, 0, 196602, 4, 0, 196603, 4, 0, 196604, 4, 0, 196605, 4, 0, 196606, 4, 0, 196607, 4, 0, 131072, 4, 0, 262134, 4, 0, 262135, 1, 8, 262136, 1, 8, 262137, 1, 8, 262138, 1, 8, 262139, 1, 8, 262140, 1, 8, 262141, 1, 8, 262142, 1, 8, 262143, 1, 8, 196608, 1, 8, 196609, 4, 0, 327670, 4, 0, 327671, 1, 8, 327672, 1, 8, 327673, 1, 8, 327674, 1, 8, 327675, 1, 8, 327676, 1, 8, 327677, 1, 8, 327678, 1, 8, 327679, 1, 8, 262144, 1, 8, 262145, 4, 0, 393206, 4, 0, 393207, 1, 8, 393208, 1, 8, 393209, 4, 0, 393210, 4, 0, 393211, 1, 8, 393212, 1, 8, 393213, 4, 0, 393214, 4, 0, 393215, 1, 8, 327680, 1, 8, 327681, 4, 0, 458742, 4, 0, 458743, 1, 8, 458744, 1, 8, 458745, 4, 0, 458746, 4, 0, 458747, 1, 8, 458748, 1, 8, 458749, 4, 0, 458750, 4, 0, 458751, 1, 8, 393216, 1, 8, 393217, 4, 0, 524278, 4, 0, 524279, 1, 8, 524280, 1, 8, 524281, 1, 8, 524282, 1, 8, 524283, 1, 8, 524284, 1, 8, 524285, 1, 8, 524286, 1, 8, 524287, 1, 8, 458752, 1, 8, 458753, 4, 0, 589814, 4, 0, 589815, 1, 8, 589816, 1, 8, 589817, 1, 8, 589818, 1, 8, 589819, 1, 8, 589820, 1, 8, 589821, 1, 8, 589822, 1, 8, 589823, 1, 8, 524288, 1, 8, 524289, 4, 0, 655350, 4, 0, 655351, 1, 8, 655352, 1, 8, 655353, 1, 8, 655354, 1, 8, 655355, 4, 0, 655356, 4, 0, 655357, 1, 8, 655358, 1, 8, 655359, 1, 8, 589824, 1, 8, 589825, 4, 0, 720886, 4, 0, 720887, 1, 8, 720888, 1, 8, 720889, 1, 8, 720890, 1, 8, 720891, 1, 8, 720892, 1, 8, 720893, 1, 8, 720894, 1, 8, 720895, 1, 8, 655360, 1, 8, 655361, 4, 0, 786422, 4, 0, 786423, 1, 8, 786424, 1, 8, 786425, 1, 8, 786426, 1, 8, 786427, 1, 8, 786428, 1, 8, 786429, 1, 8, 786430, 1, 8, 786431, 1, 8, 720896, 1, 8, 720897, 4, 0, 851959, 4, 0, 851960, 1, 8, 851961, 1, 8, 851962, 1, 8, 851963, 1, 8, 851964, 1, 8, 851965, 1, 8, 851966, 1, 8, 851967, 1, 8, 786432, 4, 0, 917496, 4, 0, 917497, 4, 0, 917498, 4, 0, 917499, 1, 8, 917500, 1, 8, 917501, 4, 0, 917502, 4, 0, 917503, 4, 0, 983034, 4, 0, 983035, 1, 8, 983036, 1, 8, 983037, 4, 0, 1048571, 4, 0, 1048572, 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+pause_mode = 1
+position = Vector2( -64, 232 )
+z_index = 1
+
+[node name="Points" type="Node2D" parent="."]
+pause_mode = 1
+
+[node name="Position2D" type="Position2D" parent="Points"]
+pause_mode = 1
+position = Vector2( 0, 64 )
+rotation = 1.5708
+
+[node name="Position2D2" type="Position2D" parent="Points"]
+pause_mode = 1
+position = Vector2( 0, 128 )
+rotation = 1.5708
+
+[node name="Position2D3" type="Position2D" parent="Points"]
+pause_mode = 1
+position = Vector2( -56, 128 )
+rotation = 1.5708
+
+[node name="Position2D4" type="Position2D" parent="Points"]
+pause_mode = 1
+position = Vector2( -56, 64 )
+rotation = 1.5708
+
+[node name="Points-B" type="Node2D" parent="."]
+pause_mode = 1
+
+[node name="Position2D" type="Position2D" parent="Points-B"]
+pause_mode = 1
+position = Vector2( -128, 64 )
+rotation = 1.5708
+
+[node name="Position2D2" type="Position2D" parent="Points-B"]
+pause_mode = 1
+position = Vector2( -72, 63.7357 )
+rotation = 1.5708
+
+[node name="Position2D3" type="Position2D" parent="Points-B"]
+pause_mode = 1
+position = Vector2( -72, 128 )
+rotation = 1.5708
+
+[node name="Position2D4" type="Position2D" parent="Points-B"]
+pause_mode = 1
+position = Vector2( -128, 128 )
+rotation = 1.5708
+
+[node name="Points-C" type="Node2D" parent="."]
+pause_mode = 1
+visible = false
+
+[node name="Position2D" type="Position2D" parent="Points-C"]
+pause_mode = 1
+position = Vector2( 8, 128 )
+rotation = 3.14159
+
+[node name="Position2D2" type="Position2D" parent="Points-C"]
+pause_mode = 1
+position = Vector2( 56, 128 )
+rotation = 3.14159
+
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
+position = Vector2( 0, 64 )
+z_index = 1
+wait_time = 1.0
+
+[node name="Enemy-B" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
+position = Vector2( -128, 64 )
+rotation = -1.5708
+wait_time = 1.0
+path_name = "Points-B"
+
+[node name="Enemy-C" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
+visible = false
+position = Vector2( 64, 112 )
+rotation = -1.5708
+wait_time = 0.5
+disabled = true
+path_name = "Points-C"
+
+[node name="doggo" parent="." instance=ExtResource( 8 )]
+pause_mode = 1
+position = Vector2( -136, 184 )
+rotation = -1.5708
+speed = -40
+restricted = true
+max_degrees = -180
+min_degrees = -90
+
+[node name="doggo2" parent="." instance=ExtResource( 8 )]
+pause_mode = 1
+position = Vector2( 8, 184 )
+rotation = 1.5708
+restricted = true
+min_degrees = 90
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="pause" parent="CanvasLayer" instance=ExtResource( 7 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+[connection signal="spotted" from="Enemy" to="." method="on_spotted"]
+[connection signal="spotted" from="Enemy-B" to="." method="on_spotted"]
+[connection signal="spotted" from="Enemy-C" to="." method="on_spotted"]
+[connection signal="spotted" from="doggo" to="." method="on_spotted"]
+[connection signal="spotted" from="doggo2" to="." method="on_spotted"]
+[connection signal="finished" from="sfx" to="." method="_on_sfx_finished"]

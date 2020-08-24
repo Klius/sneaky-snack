@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/goal/goal.png" type="Texture" id=2]
+[ext_resource path="res://assets/goal/goal.gd" type="Script" id=3]
+
+[node name="goal" type="Sprite"]
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="goal" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="goal"]
+polygon = PoolVector2Array( 0, 8, -8, 8, -8, 0, 0, -8, 8, -8, 8, 0 )
+[connection signal="body_entered" from="goal" to="." method="_on_goal_body_entered"]

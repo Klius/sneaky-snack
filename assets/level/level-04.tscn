@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/level/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/light/light.png" type="Texture" id=3]
+[ext_resource path="res://assets/guard/guard.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/goal/goal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/level/level.gd" type="Script" id=6]
+[ext_resource path="res://pause.tscn" type="PackedScene" id=7]
+
+[node name="world" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 6 )
+next_level = "res://assets/level/level-05.tscn"
+this_level = "res://assets/level/level-04.tscn"
+
+[node name="goal" parent="." instance=ExtResource( 5 )]
+position = Vector2( 24, 8 )
+z_index = 1
+
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+position = Vector2( 24, 12 )
+texture = ExtResource( 3 )
+color = Color( 0.952941, 0.917647, 0.364706, 1 )
+energy = 0.5
+range_height = 24.0
+shadow_enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Navigation" type="Navigation2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Navigation"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -196613, 4, 0, -196612, 4, 0, -196611, 4, 0, -196610, 4, 0, -196609, 4, 0, -262144, 4, 0, -262143, 4, 0, -262142, 4, 0, -262141, 4, 0, -262140, 4, 0, -262139, 4, 0, -262138, 4, 0, -262137, 4, 0, -131078, 4, 0, -131077, 1, 8, -131076, 1, 8, -131075, 1, 8, -131074, 1, 8, -131073, 1, 8, -196608, 1, 8, -196607, 1, 8, -196606, 1, 8, -196605, 1, 8, -196604, 1, 8, -196603, 1, 8, -196602, 1, 8, -196601, 1, 8, -196600, 4, 0, -65542, 4, 0, -65541, 1, 8, -65540, 1, 8, -65539, 1, 8, -65538, 1, 8, -65537, 1, 8, -131072, 1, 8, -131071, 1, 8, -131070, 1, 8, -131069, 1, 8, -131068, 1, 8, -131067, 1, 8, -131066, 1, 8, -131065, 1, 8, -131064, 4, 0, -6, 4, 0, -5, 1, 8, -4, 1, 8, -3, 4, 0, -2, 4, 0, -1, 4, 0, -65536, 1, 8, -65535, 1, 8, -65534, 1, 8, -65533, 4, 0, -65532, 4, 0, -65531, 4, 0, -65530, 1, 8, -65529, 1, 8, -65528, 4, 0, 65530, 4, 0, 65531, 1, 8, 65532, 1, 8, 65533, 4, 0, 65534, 4, 0, 65535, 4, 0, 0, 1, 8, 1, 1, 8, 2, 1, 8, 3, 4, 0, 4, 4, 0, 5, 4, 0, 6, 1, 8, 7, 1, 8, 8, 4, 0, 131066, 4, 0, 131067, 1, 8, 131068, 1, 8, 131069, 4, 0, 131070, 4, 0, 131071, 4, 0, 65536, 4, 0, 65537, 4, 0, 65538, 4, 0, 65539, 4, 0, 65540, 4, 0, 65541, 4, 0, 65542, 1, 8, 65543, 1, 8, 65544, 4, 0, 196602, 4, 0, 196603, 1, 8, 196604, 1, 8, 196605, 1, 8, 196606, 1, 8, 196607, 1, 8, 131072, 1, 8, 131073, 1, 8, 131074, 1, 8, 131075, 1, 8, 131076, 1, 8, 131077, 1, 8, 131078, 1, 8, 131079, 1, 8, 131080, 4, 0, 262138, 4, 0, 262139, 1, 8, 262140, 1, 8, 262141, 1, 8, 262142, 1, 8, 262143, 1, 8, 196608, 1, 8, 196609, 1, 8, 196610, 1, 8, 196611, 1, 8, 196612, 1, 8, 196613, 1, 8, 196614, 1, 8, 196615, 1, 8, 196616, 4, 0, 327675, 4, 0, 327676, 4, 0, 327677, 4, 0, 327678, 4, 0, 327679, 1, 8, 262144, 1, 8, 262145, 4, 0, 262146, 4, 0, 262147, 1, 8, 262148, 1, 8, 262149, 4, 0, 262150, 4, 0, 262151, 4, 0, 393214, 4, 0, 393215, 1, 8, 327680, 1, 8, 327681, 4, 0, 327682, 4, 0, 327683, 1, 8, 327684, 1, 8, 327685, 4, 0, 458750, 4, 0, 458751, 1, 8, 393216, 1, 8, 393217, 4, 0, 393218, 4, 0, 393219, 1, 8, 393220, 1, 8, 393221, 4, 0, 524286, 4, 0, 524287, 1, 8, 458752, 1, 8, 458753, 1, 8, 458754, 1, 8, 458755, 1, 8, 458756, 1, 8, 458757, 4, 0, 589822, 4, 0, 589823, 1, 8, 524288, 1, 8, 524289, 1, 8, 524290, 1, 8, 524291, 1, 8, 524292, 1, 8, 524293, 4, 0, 655358, 4, 0, 655359, 1, 8, 589824, 1, 8, 589825, 4, 0, 589826, 4, 0, 589827, 1, 8, 589828, 1, 8, 589829, 4, 0, 720894, 4, 0, 720895, 1, 8, 655360, 1, 8, 655361, 4, 0, 655362, 4, 0, 655363, 1, 8, 655364, 1, 8, 655365, 4, 0, 786430, 4, 0, 786431, 1, 8, 720896, 1, 8, 720897, 1, 8, 720898, 1, 8, 720899, 1, 8, 720900, 1, 8, 720901, 4, 0, 851966, 4, 0, 851967, 1, 8, 786432, 1, 8, 786433, 1, 8, 786434, 1, 8, 786435, 1, 8, 786436, 1, 8, 786437, 4, 0, 917503, 4, 0, 851968, 4, 0, 851969, 4, 0, 851970, 4, 0, 851971, 4, 0, 851972, 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+pause_mode = 1
+position = Vector2( 32, 192 )
+z_index = 1
+
+[node name="Points" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="Points"]
+position = Vector2( 97, 48 )
+rotation = 3.14159
+
+[node name="Position2D2" type="Position2D" parent="Points"]
+position = Vector2( -40, 48 )
+rotation = 3.14159
+
+[node name="Points-B" type="Node2D" parent="."]
+
+[node name="Position2D2" type="Position2D" parent="Points-B"]
+position = Vector2( -40, -32 )
+rotation = 3.14159
+
+[node name="Position2D" type="Position2D" parent="Points-B"]
+position = Vector2( 96, -32 )
+rotation = 3.14159
+
+[node name="Points-C" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="Points-C"]
+position = Vector2( 8, 128 )
+rotation = 3.14159
+
+[node name="Position2D2" type="Position2D" parent="Points-C"]
+position = Vector2( 56, 128 )
+rotation = 3.14159
+
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
+position = Vector2( 96, 48 )
+rotation = 1.5708
+z_index = 1
+
+[node name="Enemy-B" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
+position = Vector2( -40, -32 )
+rotation = -1.5708
+path_name = "Points-B"
+
+[node name="Enemy-C" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
+position = Vector2( 8, 128 )
+rotation = -1.5708
+wait_time = 0.5
+path_name = "Points-C"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="pause" parent="CanvasLayer" instance=ExtResource( 7 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+[connection signal="spotted" from="Enemy" to="." method="on_spotted"]
+[connection signal="spotted" from="Enemy-B" to="." method="on_spotted"]
+[connection signal="spotted" from="Enemy-C" to="." method="on_spotted"]
+[connection signal="finished" from="sfx" to="." method="_on_sfx_finished"]

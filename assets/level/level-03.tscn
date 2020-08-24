@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/level/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/guard/guard.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/goal/goal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/level/level.gd" type="Script" id=6]
+[ext_resource path="res://pause.tscn" type="PackedScene" id=7]
+
+[node name="world" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 6 )
+next_level = "res://assets/level/level-04.tscn"
+this_level = "res://assets/level/level-03.tscn"
+
+[node name="goal" parent="." instance=ExtResource( 5 )]
+pause_mode = 1
+position = Vector2( -16, -72 )
+z_index = 1
+
+[node name="Navigation" type="Navigation2D" parent="."]
+pause_mode = 1
+
+[node name="TileMap" type="TileMap" parent="Navigation"]
+pause_mode = 1
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -327682, 4, 0, -327681, 4, 0, -262147, 4, 0, -262146, 1, 8, -262145, 1, 8, -327680, 4, 0, -196611, 4, 0, -196610, 1, 8, -196609, 1, 8, -262144, 4, 0, -131076, 4, 0, -131075, 1, 8, -131074, 1, 8, -131073, 1, 8, -196608, 1, 8, -196607, 4, 0, -65540, 4, 0, -65539, 1, 8, -65538, 1, 8, -65537, 1, 8, -131072, 1, 8, -131071, 4, 0, -4, 4, 0, -3, 1, 8, -2, 1, 8, -1, 1, 8, -65536, 1, 8, -65535, 4, 0, 65532, 4, 0, 65533, 1, 8, 65534, 1, 8, 65535, 1, 8, 0, 1, 8, 1, 1, 8, 2, 4, 0, 3, 4, 0, 131068, 4, 0, 131069, 1, 8, 131070, 1, 8, 131071, 1, 8, 65536, 1, 8, 65537, 1, 8, 65538, 1, 8, 65539, 4, 0, 196604, 4, 0, 196605, 1, 8, 196606, 1, 8, 196607, 1, 8, 131072, 1, 8, 131073, 1, 8, 131074, 4, 0, 131075, 4, 0, 262140, 4, 0, 262141, 1, 8, 262142, 1, 8, 262143, 1, 8, 196608, 1, 8, 196609, 4, 0, 327674, 4, 0, 327675, 4, 0, 327676, 1, 8, 327677, 1, 8, 327678, 1, 8, 327679, 1, 8, 262144, 1, 8, 262145, 4, 0, 393210, 4, 0, 393211, 1, 8, 393212, 1, 8, 393213, 1, 8, 393214, 1, 8, 393215, 1, 8, 327680, 1, 8, 327681, 4, 0, 458746, 4, 0, 458747, 4, 0, 458748, 1, 8, 458749, 1, 8, 458750, 1, 8, 458751, 1, 8, 393216, 1, 8, 393217, 4, 0, 524284, 4, 0, 524285, 1, 8, 524286, 1, 8, 524287, 1, 8, 458752, 1, 8, 458753, 4, 0, 589820, 4, 0, 589821, 1, 8, 589822, 4, 0, 589823, 4, 0, 524288, 1, 8, 524289, 4, 0, 655356, 4, 0, 655357, 1, 8, 655358, 1, 8, 655359, 1, 8, 589824, 1, 8, 589825, 4, 0, 720892, 4, 0, 720893, 1, 8, 720894, 1, 8, 720895, 1, 8, 655360, 1, 8, 655361, 4, 0, 786428, 4, 0, 786429, 4, 0, 786430, 1, 8, 786431, 1, 8, 720896, 4, 0, 720897, 4, 0, 851965, 4, 0, 851966, 1, 8, 851967, 1, 8, 786432, 4, 0, 917502, 4, 0, 917503, 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+pause_mode = 1
+position = Vector2( -16, 168 )
+z_index = 1
+
+[node name="Points" type="Node2D" parent="."]
+pause_mode = 1
+
+[node name="Position2D" type="Position2D" parent="Points"]
+pause_mode = 1
+position = Vector2( -32, -24 )
+rotation = 3.14159
+
+[node name="Position2D2" type="Position2D" parent="Points"]
+pause_mode = 1
+position = Vector2( -32, 104 )
+rotation = 3.14159
+
+[node name="Points-B" type="Node2D" parent="."]
+pause_mode = 1
+
+[node name="Position2D" type="Position2D" parent="Points-B"]
+pause_mode = 1
+position = Vector2( 0, -24 )
+rotation = 3.14159
+
+[node name="Position2D2" type="Position2D" parent="Points-B"]
+pause_mode = 1
+position = Vector2( 0, 104 )
+rotation = 3.14159
+
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
+position = Vector2( -32, -24 )
+z_index = 1
+
+[node name="Enemy-B" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
+position = Vector2( 0, -24 )
+path_name = "Points-B"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="pause" parent="CanvasLayer" instance=ExtResource( 7 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+[connection signal="spotted" from="Enemy" to="." method="on_spotted"]
+[connection signal="spotted" from="Enemy-B" to="." method="on_spotted"]
+[connection signal="finished" from="sfx" to="." method="_on_sfx_finished"]

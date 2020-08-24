@@ -1,0 +1,121 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/level/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/light/light.png" type="Texture" id=3]
+[ext_resource path="res://assets/guard/guard.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/goal/goal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/level/level.gd" type="Script" id=6]
+[ext_resource path="res://pause.tscn" type="PackedScene" id=7]
+
+[node name="world" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 6 )
+next_level = "res://assets/level/level-09.tscn"
+this_level = "res://assets/level/level-08.tscn"
+
+[node name="goal" parent="." instance=ExtResource( 5 )]
+pause_mode = 1
+position = Vector2( -48, -64 )
+z_index = 1
+
+[node name="Light2D" type="Light2D" parent="."]
+pause_mode = 1
+visible = false
+position = Vector2( 24, 12 )
+texture = ExtResource( 3 )
+color = Color( 0.952941, 0.917647, 0.364706, 1 )
+energy = 0.5
+range_height = 24.0
+shadow_enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Navigation" type="Navigation2D" parent="."]
+pause_mode = 1
+
+[node name="TileMap" type="TileMap" parent="Navigation"]
+pause_mode = 1
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -327684, 4, 0, -327683, 4, 0, -262149, 4, 0, -262148, 1, 8, -262147, 1, 8, -262146, 4, 0, -196613, 4, 0, -196612, 1, 8, -196611, 1, 8, -196610, 4, 0, -131079, 4, 0, -131078, 4, 0, -131077, 4, 0, -131076, 1, 8, -131075, 1, 8, -131074, 4, 0, -131073, 4, 0, -196608, 4, 0, -65543, 4, 0, -65542, 1, 8, -65541, 1, 8, -65540, 1, 8, -65539, 1, 8, -65538, 1, 8, -65537, 1, 8, -131072, 4, 0, -7, 4, 0, -6, 1, 8, -5, 1, 8, -4, 1, 8, -3, 1, 8, -2, 1, 8, -1, 1, 8, -65536, 4, 0, 65529, 4, 0, 65530, 1, 8, 65531, 1, 8, 65532, 4, 0, 65533, 4, 0, 65534, 1, 8, 65535, 1, 8, 0, 4, 0, 131065, 4, 0, 131066, 1, 8, 131067, 1, 8, 131068, 1, 8, 131069, 1, 8, 131070, 1, 8, 131071, 1, 8, 65536, 4, 0, 196601, 4, 0, 196602, 1, 8, 196603, 1, 8, 196604, 1, 8, 196605, 1, 8, 196606, 1, 8, 196607, 1, 8, 131072, 4, 0, 262137, 4, 0, 262138, 1, 8, 262139, 1, 8, 262140, 4, 0, 262141, 4, 0, 262142, 1, 8, 262143, 1, 8, 196608, 4, 0, 327673, 4, 0, 327674, 1, 8, 327675, 1, 8, 327676, 1, 8, 327677, 1, 8, 327678, 1, 8, 327679, 1, 8, 262144, 4, 0, 393209, 4, 0, 393210, 1, 8, 393211, 1, 8, 393212, 1, 8, 393213, 1, 8, 393214, 1, 8, 393215, 1, 8, 327680, 4, 0, 458745, 4, 0, 458746, 1, 8, 458747, 1, 8, 458748, 4, 0, 458749, 4, 0, 458750, 1, 8, 458751, 1, 8, 393216, 4, 0, 524281, 4, 0, 524282, 1, 8, 524283, 1, 8, 524284, 1, 8, 524285, 1, 8, 524286, 1, 8, 524287, 1, 8, 458752, 4, 0, 589817, 4, 0, 589818, 1, 8, 589819, 1, 8, 589820, 1, 8, 589821, 1, 8, 589822, 1, 8, 589823, 1, 8, 524288, 4, 0, 655353, 4, 0, 655354, 1, 8, 655355, 1, 8, 655356, 4, 0, 655357, 4, 0, 655358, 1, 8, 655359, 1, 8, 589824, 4, 0, 720889, 4, 0, 720890, 1, 8, 720891, 1, 8, 720892, 1, 8, 720893, 1, 8, 720894, 1, 8, 720895, 1, 8, 655360, 4, 0, 786425, 4, 0, 786426, 1, 8, 786427, 1, 8, 786428, 1, 8, 786429, 1, 8, 786430, 1, 8, 786431, 1, 8, 720896, 4, 0, 851961, 4, 0, 851962, 4, 0, 851963, 4, 0, 851964, 4, 0, 851965, 4, 0, 851966, 4, 0, 851967, 4, 0, 786432, 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+pause_mode = 1
+position = Vector2( -48, 176 )
+z_index = 1
+
+[node name="Points" type="Node2D" parent="."]
+pause_mode = 1
+
+[node name="Position2D" type="Position2D" parent="Points"]
+pause_mode = 1
+position = Vector2( -16, 80 )
+rotation = 3.14159
+
+[node name="Position2D2" type="Position2D" parent="Points"]
+pause_mode = 1
+position = Vector2( -16, 128 )
+rotation = 3.14159
+
+[node name="Points-B" type="Node2D" parent="."]
+pause_mode = 1
+
+[node name="Position2D" type="Position2D" parent="Points-B"]
+pause_mode = 1
+position = Vector2( -80, 32 )
+rotation = 3.14159
+
+[node name="Position2D2" type="Position2D" parent="Points-B"]
+pause_mode = 1
+position = Vector2( -80, 80 )
+rotation = 3.14159
+
+[node name="Points-C" type="Node2D" parent="."]
+pause_mode = 1
+
+[node name="Position2D" type="Position2D" parent="Points-C"]
+pause_mode = 1
+position = Vector2( -16, -16 )
+rotation = 3.14159
+
+[node name="Position2D2" type="Position2D" parent="Points-C"]
+pause_mode = 1
+position = Vector2( -16, 32 )
+rotation = 3.14159
+
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
+position = Vector2( -16, 80 )
+z_index = 1
+wait_time = 1.0
+
+[node name="Enemy-B" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
+position = Vector2( -80, 32 )
+wait_time = 1.0
+path_name = "Points-B"
+
+[node name="Enemy-C" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
+position = Vector2( -16, -16 )
+wait_time = 1.0
+path_name = "Points-C"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="pause" parent="CanvasLayer" instance=ExtResource( 7 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+[connection signal="spotted" from="Enemy" to="." method="on_spotted"]
+[connection signal="spotted" from="Enemy-B" to="." method="on_spotted"]
+[connection signal="spotted" from="Enemy-C" to="." method="on_spotted"]
+[connection signal="finished" from="sfx" to="." method="_on_sfx_finished"]
