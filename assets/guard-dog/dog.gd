@@ -27,7 +27,7 @@ func _physics_process(delta):
 	if not restricted:
 		rotation_degrees += speed*delta
 	else:
-		rotation_degrees += direction*speed*delta
+		rotation_degrees += (direction*speed)*delta
 		if abs(rotation_degrees) >= abs(max_degrees):
 			rotation_degrees = max_degrees
 			direction *= -1

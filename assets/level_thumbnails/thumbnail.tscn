@@ -5,7 +5,7 @@
 [node name="TextureRect" type="TextureRect"]
 margin_right = 128.0
 margin_bottom = 128.0
-rect_min_size = Vector2( 128, 128 )
+rect_min_size = Vector2( 240, 240 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource( 1 )
