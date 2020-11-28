@@ -18,18 +18,33 @@ func _input(event):
 		target = (global_position - (get_viewport_rect().size / 2)) + event.position
 	if event is InputEventScreenTouch and !event.pressed:
 		target = global_position
+		$Line2D.points[1] = Vector2()
 		
 func _process(_delta):
 	XSpeed = 0
 	YSpeed = 0
-	if OS.get_name() == "Android":
+	if OS.get_name() != "Android":
 		if get_position().distance_to(target) > 10:
 			var velocity = target - get_position()
 			velocity = velocity.normalized() * speed
 			XSpeed = velocity.x
 			YSpeed = velocity.y
 			#target = get_global_position()
-			#look_at(velocity)
+			if YSpeed < 0:
+				$sprite.flip_v = true
+				$LightOccluder2D.scale.x = -1
+			else:
+				$sprite.flip_v = false
+				$LightOccluder2D.scale.x = 1
+			if XSpeed < 0:
+				$sprite.flip_h = true
+				$LightOccluder2D.scale.x = -1
+			else:
+				$sprite.flip_h = false
+				$LightOccluder2D.scale.x = 1
+			$Line2D.points[1] = (target-global_position)/2
+		else:
+			$Line2D.points[1] = Vector2()
 	else:
 		if Input.is_action_pressed("up"):
 			YSpeed = -speed
@@ -44,6 +59,7 @@ func _process(_delta):
 			XSpeed = speed
 			rotation_degrees = -90
 		
+	
 func _physics_process(_delta):
 # warning-ignore:return_value_discarded
 	move_and_slide(Vector2(XSpeed, YSpeed))
