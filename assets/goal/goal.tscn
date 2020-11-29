@@ -1,7 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://assets/goal/goal-particle.png" type="Texture" id=1]
 [ext_resource path="res://assets/goal/goal.png" type="Texture" id=2]
 [ext_resource path="res://assets/goal/goal.gd" type="Script" id=3]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.62963, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 0.933594, 1, 0, 1, 0.933333, 1, 0, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 9.25
+flag_disable_z = true
+gravity = Vector3( 0, -20, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.5
+scale_random = 0.28
+color_ramp = SubResource( 2 )
 
 [node name="goal" type="Sprite"]
 texture = ExtResource( 2 )
@@ -13,4 +32,10 @@ collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="goal"]
 polygon = PoolVector2Array( 0, 8, -8, 8, -8, 0, 0, -8, 8, -8, 8, 0 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+amount = 16
+lifetime = 2.0
+process_material = SubResource( 3 )
+texture = ExtResource( 1 )
 [connection signal="body_entered" from="goal" to="." method="_on_goal_body_entered"]
