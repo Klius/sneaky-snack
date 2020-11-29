@@ -23,7 +23,7 @@ func _input(event):
 func _process(_delta):
 	XSpeed = 0
 	YSpeed = 0
-	if OS.get_name() != "Android":
+	if OS.has_touchscreen_ui_hint () :
 		if get_position().distance_to(target) > 10:
 			var velocity = target - get_position()
 			velocity = velocity.normalized() * speed
