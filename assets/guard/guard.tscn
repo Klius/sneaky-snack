@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/guard/ai.gd" type="Script" id=1]
 [ext_resource path="res://assets/guard/guard.png" type="Texture" id=2]
-[ext_resource path="res://assets/guard/light.png" type="Texture" id=3]
+[ext_resource path="res://assets/guard/light-export.png" type="Texture" id=3]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 3.34042, 6.85447, 3.43489, 3.45362, 4.85191, 3.64255, 5.04085, 5.34298, 5.98553, 5.05958, 6.3634, 3.26468, 7.30808, 2.50894, 7.02468, -6.18213, 5.22979, -7.31575, 4.75745, -1.93106, 3.34042, -1.93106, 3.15149, -7.03234, -2.5166, -7.22128, -3.36681, -5.89872, -3.17787, -1.74213, -5.82298, -1.55319, -6.29532, 5.24851, -4.02809, 5.81532, -3.65022, 3.73702, -3.27234, 7.32681, -1.57192, 6.94894, -1.47745, 5.34298, 1.26213, 5.53191, 1.45106, 7.61021 )
@@ -19,10 +19,12 @@ scale = Vector2( 0.625, 0.75035 )
 polygon = PoolVector2Array( -4.76847, 11.2733, -9.7007, 8.88783, -9.54159, 0.406226, -3.65474, -7.41274, 5.7324, -7.41274, 10.5055, -7.28022, 11.1419, 6.89995, 4.77778, 11.4058 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+light_mask = 2
 occluder = SubResource( 1 )
+light_mask = 2
 
 [node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 0.389157, 31.7357 )
+position = Vector2( -0.0312913, 0.202085 )
 texture = ExtResource( 3 )
 color = Color( 0.294118, 0.968627, 0.478431, 1 )
 shadow_enabled = true
