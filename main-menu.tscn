@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/font/RussoOne-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/controls.png" type="Texture" id=2]
+[ext_resource path="res://ScrollContainer.gd" type="Script" id=2]
 [ext_resource path="res://main-menu.gd" type="Script" id=3]
 [ext_resource path="res://assets/level_thumbnails/08.png" type="Texture" id=4]
 [ext_resource path="res://assets/level_thumbnails/thumbnail.tscn" type="PackedScene" id=5]
@@ -54,6 +54,8 @@ margin_left = 45.0
 margin_top = 45.0
 margin_right = -45.0
 margin_bottom = -45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -64,7 +66,7 @@ margin_bottom = 510.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Main/VBoxContainer"]
 margin_right = 934.0
-margin_bottom = 102.0
+margin_bottom = 167.0
 rect_min_size = Vector2( 934, 100 )
 rect_pivot_offset = Vector2( -1197, 91 )
 size_flags_horizontal = 3
@@ -75,52 +77,38 @@ bbcode_text = "[center]SNEAKY SNACK[/center]"
 text = "SNEAKY SNACK"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Main/VBoxContainer"]
-margin_top = 106.0
+margin_top = 171.0
 margin_right = 934.0
-margin_bottom = 208.0
+margin_bottom = 338.0
 rect_min_size = Vector2( 934, 100 )
 rect_pivot_offset = Vector2( -1197, 91 )
+size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "[center]Avoid the guards and grab the snack!
-Controls[/center]"
-text = "Avoid the guards and grab the snack!
-Controls"
-
-[node name="CenterContainer" type="CenterContainer" parent="Main/VBoxContainer"]
-margin_top = 212.0
-margin_right = 934.0
-margin_bottom = 404.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="Main/VBoxContainer/CenterContainer"]
-margin_left = 371.0
-margin_right = 563.0
-margin_bottom = 192.0
-size_flags_vertical = 3
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+bbcode_text = "[center]Avoid the guards and grab the snack![/center]"
+text = "Avoid the guards and grab the snack!"
 
 [node name="CenterContainer2" type="CenterContainer" parent="Main/VBoxContainer"]
-margin_top = 408.0
+margin_top = 342.0
 margin_right = 934.0
 margin_bottom = 510.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer/CenterContainer2"]
 margin_left = 361.0
-margin_top = 4.0
+margin_top = 37.0
 margin_right = 573.0
-margin_bottom = 98.0
+margin_bottom = 131.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="BtnStart" type="Button" parent="Main/VBoxContainer/CenterContainer2/HBoxContainer"]
 margin_right = 212.0
 margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_fonts/font = SubResource( 3 )
 text = "Start"
 
@@ -128,13 +116,23 @@ text = "Start"
 margin_top = 49.0
 margin_right = 212.0
 margin_bottom = 94.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_fonts/font = SubResource( 3 )
 text = "Level Select"
 
 [node name="Level" type="MarginContainer" parent="."]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -142,35 +140,36 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="Level"]
 margin_right = 1024.0
 margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 follow_focus = true
 scroll_horizontal_enabled = false
-scroll_deadzone = 187
+script = ExtResource( 2 )
 
-[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer"]
-margin_right = 972.0
+[node name="GridContainer" type="GridContainer" parent="Level/ScrollContainer"]
+margin_right = 1024.0
 margin_bottom = 818.0
-
-[node name="GridContainer" type="GridContainer" parent="Level/ScrollContainer/CenterContainer"]
-margin_right = 972.0
-margin_bottom = 818.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 columns = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="level-01" type="VBoxContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer"]
+[node name="level-01" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
 margin_right = 240.0
 margin_bottom = 270.0
 
-[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-01"]
+[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-01"]
+margin_right = 240.0
+margin_bottom = 240.0
+mouse_filter = 1
+
+[node name="TextureRect" parent="Level/ScrollContainer/GridContainer/level-01/CenterContainer" instance=ExtResource( 5 )]
 margin_right = 240.0
 margin_bottom = 240.0
 
-[node name="TextureRect" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-01/CenterContainer" instance=ExtResource( 5 )]
-margin_right = 240.0
-margin_bottom = 240.0
-
-[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-01"]
+[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-01"]
 margin_top = 244.0
 margin_right = 240.0
 margin_bottom = 270.0
@@ -178,28 +177,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn01" type="Button" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-01/CenterContainer2"]
+[node name="btn01" type="Button" parent="Level/ScrollContainer/GridContainer/level-01/CenterContainer2"]
 margin_left = 81.0
 margin_right = 159.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 4 )
 text = "Level 01"
 
-[node name="level-02" type="VBoxContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer"]
+[node name="level-02" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
 margin_left = 244.0
 margin_right = 484.0
 margin_bottom = 270.0
 
-[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-02"]
+[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-02"]
 margin_right = 240.0
 margin_bottom = 240.0
 
-[node name="TextureRect" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-02/CenterContainer" instance=ExtResource( 5 )]
+[node name="TextureRect" parent="Level/ScrollContainer/GridContainer/level-02/CenterContainer" instance=ExtResource( 5 )]
 margin_right = 240.0
 margin_bottom = 240.0
 texture = ExtResource( 6 )
 
-[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-02"]
+[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-02"]
 margin_top = 244.0
 margin_right = 240.0
 margin_bottom = 270.0
@@ -207,28 +206,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn01" type="Button" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-02/CenterContainer2"]
+[node name="btn01" type="Button" parent="Level/ScrollContainer/GridContainer/level-02/CenterContainer2"]
 margin_left = 79.0
 margin_right = 160.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 4 )
 text = "Level 02"
 
-[node name="level-03" type="VBoxContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer"]
+[node name="level-03" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
 margin_left = 488.0
 margin_right = 728.0
 margin_bottom = 270.0
 
-[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-03"]
+[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-03"]
 margin_right = 240.0
 margin_bottom = 240.0
 
-[node name="TextureRect" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-03/CenterContainer" instance=ExtResource( 5 )]
+[node name="TextureRect" parent="Level/ScrollContainer/GridContainer/level-03/CenterContainer" instance=ExtResource( 5 )]
 margin_right = 240.0
 margin_bottom = 240.0
 texture = ExtResource( 8 )
 
-[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-03"]
+[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-03"]
 margin_top = 244.0
 margin_right = 240.0
 margin_bottom = 270.0
@@ -236,28 +235,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn01" type="Button" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-03/CenterContainer2"]
+[node name="btn01" type="Button" parent="Level/ScrollContainer/GridContainer/level-03/CenterContainer2"]
 margin_left = 79.0
 margin_right = 161.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 4 )
 text = "Level 03"
 
-[node name="level-04" type="VBoxContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer"]
+[node name="level-04" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
 margin_left = 732.0
 margin_right = 972.0
 margin_bottom = 270.0
 
-[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-04"]
+[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-04"]
 margin_right = 240.0
 margin_bottom = 240.0
 
-[node name="TextureRect" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-04/CenterContainer" instance=ExtResource( 5 )]
+[node name="TextureRect" parent="Level/ScrollContainer/GridContainer/level-04/CenterContainer" instance=ExtResource( 5 )]
 margin_right = 240.0
 margin_bottom = 240.0
 texture = ExtResource( 9 )
 
-[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-04"]
+[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-04"]
 margin_top = 244.0
 margin_right = 240.0
 margin_bottom = 270.0
@@ -265,28 +264,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn01" type="Button" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-04/CenterContainer2"]
+[node name="btn01" type="Button" parent="Level/ScrollContainer/GridContainer/level-04/CenterContainer2"]
 margin_left = 79.0
 margin_right = 161.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 4 )
 text = "Level 04"
 
-[node name="level-05" type="VBoxContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer"]
+[node name="level-05" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
 margin_top = 274.0
 margin_right = 240.0
 margin_bottom = 544.0
 
-[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-05"]
+[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-05"]
 margin_right = 240.0
 margin_bottom = 240.0
 
-[node name="TextureRect2" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-05/CenterContainer" instance=ExtResource( 5 )]
+[node name="TextureRect2" parent="Level/ScrollContainer/GridContainer/level-05/CenterContainer" instance=ExtResource( 5 )]
 margin_right = 240.0
 margin_bottom = 240.0
 texture = ExtResource( 7 )
 
-[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-05"]
+[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-05"]
 margin_top = 244.0
 margin_right = 240.0
 margin_bottom = 270.0
@@ -294,29 +293,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn01" type="Button" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-05/CenterContainer2"]
+[node name="btn01" type="Button" parent="Level/ScrollContainer/GridContainer/level-05/CenterContainer2"]
 margin_left = 79.0
 margin_right = 161.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 4 )
 text = "Level 05"
 
-[node name="level-06" type="VBoxContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer"]
+[node name="level-06" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
 margin_left = 244.0
 margin_top = 274.0
 margin_right = 484.0
 margin_bottom = 544.0
 
-[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-06"]
+[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-06"]
 margin_right = 240.0
 margin_bottom = 240.0
 
-[node name="TextureRect" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-06/CenterContainer" instance=ExtResource( 5 )]
+[node name="TextureRect" parent="Level/ScrollContainer/GridContainer/level-06/CenterContainer" instance=ExtResource( 5 )]
 margin_right = 240.0
 margin_bottom = 240.0
 texture = ExtResource( 10 )
 
-[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-06"]
+[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-06"]
 margin_top = 244.0
 margin_right = 240.0
 margin_bottom = 270.0
@@ -324,29 +323,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn01" type="Button" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-06/CenterContainer2"]
+[node name="btn01" type="Button" parent="Level/ScrollContainer/GridContainer/level-06/CenterContainer2"]
 margin_left = 79.0
 margin_right = 161.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 4 )
 text = "Level 06"
 
-[node name="level-07" type="VBoxContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer"]
+[node name="level-07" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
 margin_left = 488.0
 margin_top = 274.0
 margin_right = 728.0
 margin_bottom = 544.0
 
-[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-07"]
+[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-07"]
 margin_right = 240.0
 margin_bottom = 240.0
 
-[node name="TextureRect" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-07/CenterContainer" instance=ExtResource( 5 )]
+[node name="TextureRect" parent="Level/ScrollContainer/GridContainer/level-07/CenterContainer" instance=ExtResource( 5 )]
 margin_right = 240.0
 margin_bottom = 240.0
 texture = ExtResource( 12 )
 
-[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-07"]
+[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-07"]
 margin_top = 244.0
 margin_right = 240.0
 margin_bottom = 270.0
@@ -354,29 +353,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn01" type="Button" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-07/CenterContainer2"]
+[node name="btn01" type="Button" parent="Level/ScrollContainer/GridContainer/level-07/CenterContainer2"]
 margin_left = 79.0
 margin_right = 160.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 4 )
 text = "Level 07"
 
-[node name="level-08" type="VBoxContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer"]
+[node name="level-08" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
 margin_left = 732.0
 margin_top = 274.0
 margin_right = 972.0
 margin_bottom = 544.0
 
-[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-08"]
+[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-08"]
 margin_right = 240.0
 margin_bottom = 240.0
 
-[node name="TextureRect" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-08/CenterContainer" instance=ExtResource( 5 )]
+[node name="TextureRect" parent="Level/ScrollContainer/GridContainer/level-08/CenterContainer" instance=ExtResource( 5 )]
 margin_right = 240.0
 margin_bottom = 240.0
 texture = ExtResource( 4 )
 
-[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-08"]
+[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-08"]
 margin_top = 244.0
 margin_right = 240.0
 margin_bottom = 270.0
@@ -384,28 +383,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn01" type="Button" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-08/CenterContainer2"]
+[node name="btn01" type="Button" parent="Level/ScrollContainer/GridContainer/level-08/CenterContainer2"]
 margin_left = 78.0
 margin_right = 161.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 4 )
 text = "Level 08"
 
-[node name="level-09" type="VBoxContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer"]
+[node name="level-09" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
 margin_top = 548.0
 margin_right = 240.0
 margin_bottom = 818.0
 
-[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-09"]
+[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-09"]
 margin_right = 240.0
 margin_bottom = 240.0
 
-[node name="TextureRect" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-09/CenterContainer" instance=ExtResource( 5 )]
+[node name="TextureRect" parent="Level/ScrollContainer/GridContainer/level-09/CenterContainer" instance=ExtResource( 5 )]
 margin_right = 240.0
 margin_bottom = 240.0
 texture = ExtResource( 13 )
 
-[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-09"]
+[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-09"]
 margin_top = 244.0
 margin_right = 240.0
 margin_bottom = 270.0
@@ -413,29 +412,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn01" type="Button" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-09/CenterContainer2"]
+[node name="btn01" type="Button" parent="Level/ScrollContainer/GridContainer/level-09/CenterContainer2"]
 margin_left = 79.0
 margin_right = 161.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 4 )
 text = "Level 09"
 
-[node name="level-10" type="VBoxContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer"]
+[node name="level-10" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
 margin_left = 244.0
 margin_top = 548.0
 margin_right = 484.0
 margin_bottom = 818.0
 
-[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-10"]
+[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-10"]
 margin_right = 240.0
 margin_bottom = 240.0
 
-[node name="TextureRect" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-10/CenterContainer" instance=ExtResource( 5 )]
+[node name="TextureRect" parent="Level/ScrollContainer/GridContainer/level-10/CenterContainer" instance=ExtResource( 5 )]
 margin_right = 240.0
 margin_bottom = 240.0
 texture = ExtResource( 11 )
 
-[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-10"]
+[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-10"]
 margin_top = 244.0
 margin_right = 240.0
 margin_bottom = 270.0
@@ -443,29 +442,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn01" type="Button" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-10/CenterContainer2"]
+[node name="btn01" type="Button" parent="Level/ScrollContainer/GridContainer/level-10/CenterContainer2"]
 margin_left = 81.0
 margin_right = 159.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 4 )
 text = "Level 10"
 
-[node name="level-11" type="VBoxContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer"]
+[node name="level-11" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
 margin_left = 488.0
 margin_top = 548.0
 margin_right = 728.0
 margin_bottom = 818.0
 
-[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-11"]
+[node name="CenterContainer" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-11"]
 margin_right = 240.0
 margin_bottom = 240.0
 
-[node name="TextureRect" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-11/CenterContainer" instance=ExtResource( 5 )]
+[node name="TextureRect" parent="Level/ScrollContainer/GridContainer/level-11/CenterContainer" instance=ExtResource( 5 )]
 margin_right = 240.0
 margin_bottom = 240.0
 texture = ExtResource( 14 )
 
-[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-11"]
+[node name="CenterContainer2" type="CenterContainer" parent="Level/ScrollContainer/GridContainer/level-11"]
 margin_top = 244.0
 margin_right = 240.0
 margin_bottom = 270.0
@@ -473,7 +472,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn01" type="Button" parent="Level/ScrollContainer/CenterContainer/GridContainer/level-11/CenterContainer2"]
+[node name="btn01" type="Button" parent="Level/ScrollContainer/GridContainer/level-11/CenterContainer2"]
 margin_left = 83.0
 margin_right = 156.0
 margin_bottom = 26.0
@@ -499,14 +498,14 @@ text = "Klius Escarlopini
 2020 "
 [connection signal="pressed" from="Main/VBoxContainer/CenterContainer2/HBoxContainer/BtnStart" to="." method="_on_BtnStart_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/CenterContainer2/HBoxContainer/BtnSelect" to="." method="_on_BtnSelect_pressed"]
-[connection signal="pressed" from="Level/ScrollContainer/CenterContainer/GridContainer/level-01/CenterContainer2/btn01" to="." method="start_level" binds= [ 0 ]]
-[connection signal="pressed" from="Level/ScrollContainer/CenterContainer/GridContainer/level-02/CenterContainer2/btn01" to="." method="start_level" binds= [ 1 ]]
-[connection signal="pressed" from="Level/ScrollContainer/CenterContainer/GridContainer/level-03/CenterContainer2/btn01" to="." method="start_level" binds= [ 2 ]]
-[connection signal="pressed" from="Level/ScrollContainer/CenterContainer/GridContainer/level-04/CenterContainer2/btn01" to="." method="start_level" binds= [ 3 ]]
-[connection signal="pressed" from="Level/ScrollContainer/CenterContainer/GridContainer/level-05/CenterContainer2/btn01" to="." method="start_level" binds= [ 4 ]]
-[connection signal="pressed" from="Level/ScrollContainer/CenterContainer/GridContainer/level-06/CenterContainer2/btn01" to="." method="start_level" binds= [ 5 ]]
-[connection signal="pressed" from="Level/ScrollContainer/CenterContainer/GridContainer/level-07/CenterContainer2/btn01" to="." method="start_level" binds= [ 6 ]]
-[connection signal="pressed" from="Level/ScrollContainer/CenterContainer/GridContainer/level-08/CenterContainer2/btn01" to="." method="start_level" binds= [ 7 ]]
-[connection signal="pressed" from="Level/ScrollContainer/CenterContainer/GridContainer/level-09/CenterContainer2/btn01" to="." method="start_level" binds= [ 8 ]]
-[connection signal="pressed" from="Level/ScrollContainer/CenterContainer/GridContainer/level-10/CenterContainer2/btn01" to="." method="start_level" binds= [ 9 ]]
-[connection signal="pressed" from="Level/ScrollContainer/CenterContainer/GridContainer/level-11/CenterContainer2/btn01" to="." method="start_level" binds= [ 10 ]]
+[connection signal="pressed" from="Level/ScrollContainer/GridContainer/level-01/CenterContainer2/btn01" to="." method="start_level" binds= [ 0 ]]
+[connection signal="pressed" from="Level/ScrollContainer/GridContainer/level-02/CenterContainer2/btn01" to="." method="start_level" binds= [ 1 ]]
+[connection signal="pressed" from="Level/ScrollContainer/GridContainer/level-03/CenterContainer2/btn01" to="." method="start_level" binds= [ 2 ]]
+[connection signal="pressed" from="Level/ScrollContainer/GridContainer/level-04/CenterContainer2/btn01" to="." method="start_level" binds= [ 3 ]]
+[connection signal="pressed" from="Level/ScrollContainer/GridContainer/level-05/CenterContainer2/btn01" to="." method="start_level" binds= [ 4 ]]
+[connection signal="pressed" from="Level/ScrollContainer/GridContainer/level-06/CenterContainer2/btn01" to="." method="start_level" binds= [ 5 ]]
+[connection signal="pressed" from="Level/ScrollContainer/GridContainer/level-07/CenterContainer2/btn01" to="." method="start_level" binds= [ 6 ]]
+[connection signal="pressed" from="Level/ScrollContainer/GridContainer/level-08/CenterContainer2/btn01" to="." method="start_level" binds= [ 7 ]]
+[connection signal="pressed" from="Level/ScrollContainer/GridContainer/level-09/CenterContainer2/btn01" to="." method="start_level" binds= [ 8 ]]
+[connection signal="pressed" from="Level/ScrollContainer/GridContainer/level-10/CenterContainer2/btn01" to="." method="start_level" binds= [ 9 ]]
+[connection signal="pressed" from="Level/ScrollContainer/GridContainer/level-11/CenterContainer2/btn01" to="." method="start_level" binds= [ 10 ]]

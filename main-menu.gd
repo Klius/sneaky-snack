@@ -37,4 +37,4 @@ func start_level(idx):
 func _on_BtnSelect_pressed():
 	$Main.visible = false
 	$Level.visible = true
-	$"Level/ScrollContainer/CenterContainer/GridContainer/level-01/CenterContainer2/btn01".grab_focus()
+	$"Level/ScrollContainer/GridContainer/level-01/CenterContainer2/btn01".grab_focus()

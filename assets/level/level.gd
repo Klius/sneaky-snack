@@ -31,6 +31,7 @@ func pause():
 	
 func _process(_delta):
 	pause_timer -= _delta
+	get_cell()
 	if Input.is_action_pressed("pause") and pause_timer < 0:
 		pause()
 		pause_timer = 0.5
@@ -71,3 +72,7 @@ func _on_sfx_finished():
 	else:
 		change_level()
 
+func get_cell():
+	var tile_pos = $Navigation/TileMap.world_to_map($Player.global_position)
+	var cell = $Navigation/TileMap.get_cellv(tile_pos)
+	#print($Navigation/TileMap.tile_set.tile_get_name(cell))

@@ -31,11 +31,9 @@ func _process(_delta):
 			YSpeed = velocity.y
 			#target = get_global_position()
 			if YSpeed < 0:
-				$sprite.flip_v = true
-				$LightOccluder2D.scale.x = -1
+				$sprite.animation = "back"
 			else:
-				$sprite.flip_v = false
-				$LightOccluder2D.scale.x = 1
+				$sprite.animation = "front"
 			if XSpeed < 0:
 				$sprite.flip_h = true
 				$LightOccluder2D.scale.x = -1
@@ -63,6 +61,9 @@ func _process(_delta):
 func _physics_process(_delta):
 # warning-ignore:return_value_discarded
 	move_and_slide(Vector2(XSpeed, YSpeed))
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		print("I collided with ", collision.collider.name)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
