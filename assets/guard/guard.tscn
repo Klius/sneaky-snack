@@ -41,26 +41,31 @@ polygon = PoolVector2Array( 0, 0, 24, 64, -24, 64 )
 [node name="RayCast2D" type="RayCast2D" parent="rays"]
 enabled = true
 cast_to = Vector2( 0, 56 )
+collision_mask = 524289
 
 [node name="RayCast2D2" type="RayCast2D" parent="rays"]
 rotation = 0.20944
 enabled = true
 cast_to = Vector2( 0, 57 )
+collision_mask = 524289
 
 [node name="RayCast2D3" type="RayCast2D" parent="rays"]
 rotation = -0.20944
 enabled = true
 cast_to = Vector2( 0, 57 )
+collision_mask = 524289
 
 [node name="RayCast2D4" type="RayCast2D" parent="rays"]
 rotation = -0.357792
 enabled = true
 cast_to = Vector2( 0, 60 )
+collision_mask = 524289
 
 [node name="RayCast2D5" type="RayCast2D" parent="rays"]
 rotation = 0.349066
 enabled = true
 cast_to = Vector2( 0, 60 )
+collision_mask = 524289
 
 [node name="noise_detect" type="Area2D" parent="."]
 
