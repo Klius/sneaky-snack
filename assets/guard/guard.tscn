@@ -4,10 +4,10 @@
 [ext_resource path="res://assets/guard/guard.png" type="Texture" id=2]
 [ext_resource path="res://assets/guard/light-export.png" type="Texture" id=3]
 
-[sub_resource type="OccluderPolygon2D" id=1]
+[sub_resource type="OccluderPolygon2D" id=2]
 polygon = PoolVector2Array( 3.34042, 6.85447, 3.43489, 3.45362, 4.85191, 3.64255, 5.04085, 5.34298, 5.98553, 5.05958, 6.3634, 3.26468, 7.30808, 2.50894, 7.02468, -6.18213, 5.22979, -7.31575, 4.75745, -1.93106, 3.34042, -1.93106, 3.15149, -7.03234, -2.5166, -7.22128, -3.36681, -5.89872, -3.17787, -1.74213, -5.82298, -1.55319, -6.29532, 5.24851, -4.02809, 5.81532, -3.65022, 3.73702, -3.27234, 7.32681, -1.57192, 6.94894, -1.47745, 5.34298, 1.26213, 5.53191, 1.45106, 7.61021 )
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=3]
 radius = 40.0
 
 [node name="Enemy" type="KinematicBody2D"]
@@ -23,7 +23,7 @@ polygon = PoolVector2Array( -4.76847, 11.2733, -9.7007, 8.88783, -9.54159, 0.406
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 light_mask = 0
-occluder = SubResource( 1 )
+occluder = SubResource( 2 )
 light_mask = 0
 
 [node name="Light2D" type="Light2D" parent="."]
@@ -70,5 +70,5 @@ collision_mask = 524289
 [node name="noise_detect" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="noise_detect"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 [connection signal="area_entered" from="noise_detect" to="." method="_on_noise_detect_area_entered"]

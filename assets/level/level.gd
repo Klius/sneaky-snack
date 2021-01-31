@@ -2,19 +2,23 @@ extends Node2D
 
 export var next_level = "res://assets/level/level-02.tscn"
 export var this_level = "res://assets/level/level-01.tscn"
-
+var NOISE_FLOORS = ["Water"]
+var NOISE = null
+var WATER_FOOTSTEPS = null
 var fail_jingle 
 var success_jingle
 
 var restart = false
 
 var pause_timer = 0
-
+var noise_timer = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	success_jingle = preload("res://audio/success.ogg")
 	fail_jingle = preload("res://audio/fail.ogg")
+	NOISE = preload("res://assets/noise/noise.tscn")
+	WATER_FOOTSTEPS = preload("res://assets/water-footstep/water-footstep.tscn")
 	get_tree().paused = false
 # warning-ignore:return_value_discarded
 	get_node("goal").connect("level_complete",self,"on_level_complete")
@@ -31,6 +35,7 @@ func pause():
 	
 func _process(_delta):
 	pause_timer -= _delta
+	noise_timer -= _delta
 	get_cell()
 	if Input.is_action_pressed("pause") and pause_timer < 0:
 		pause()
@@ -73,6 +78,19 @@ func _on_sfx_finished():
 		change_level()
 
 func get_cell():
-	var tile_pos = $Navigation/TileMap.world_to_map($Player.global_position)
-	var cell = $Navigation/TileMap.get_cellv(tile_pos)
-	#print($Navigation/TileMap.tile_set.tile_get_name(cell))
+	if $Player.XSpeed != 0 or $Player.YSpeed !=0:
+		var tile_pos = $Navigation/TileMap.world_to_map($Player.global_position)
+		var cell = $Navigation/TileMap.get_cellv(tile_pos)
+		#print($Navigation/TileMap.tile_set.tile_get_name(cell))
+		if $Navigation/TileMap.tile_set.tile_get_name(cell) in NOISE_FLOORS and noise_timer < 0 :
+			spawn_noise($Player.global_position,"water")
+			
+func spawn_noise(pos, type):
+	noise_timer = 0.1
+	var new_noise = NOISE.instance()
+	var footstep = WATER_FOOTSTEPS.instance()
+	new_noise.global_position = pos
+	footstep.global_position = pos
+	add_child(new_noise)
+	add_child(footstep)
+	

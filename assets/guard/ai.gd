@@ -38,20 +38,25 @@ func investigate_noise(delta):
 			look_at(noise_point)
 			rotation_degrees -=90
 		else:
-			if noise_investigation == 0:
-				noise_investigation = 1
-				rotation_degrees = 90
-				wait = wait_time
-			elif noise_investigation == 1:
-				rotation_degrees = -90
-				noise_investigation = 2
-				wait = wait_time
-			elif noise_investigation == 2:
-				noise_point = null
-				noise_investigation = 3
-				look_at(path[current_point].get_global_position())
-				rotation_degrees -=90
-
+			investigate()
+	elif points.size() == 0:
+		investigate()
+		
+func investigate ():
+	if noise_investigation == 0:
+		noise_investigation = 1
+		rotation_degrees = 90
+		wait = wait_time
+	elif noise_investigation == 1:
+		rotation_degrees = -90
+		noise_investigation = 2
+		wait = wait_time
+	elif noise_investigation == 2:
+		noise_point = null
+		noise_investigation = 3
+		look_at(path[current_point].get_global_position())
+		rotation_degrees -=90
+		
 func _physics_process(delta):
 	#Detection
 	if disabled:
@@ -81,10 +86,12 @@ func normal_patrol(delta):
 		if distance.length() > eps or points.size() > 2:
 # warning-ignore:return_value_discarded
 			move_and_slide(direction*speed)
+			look_at(path[current_point].get_global_position())
+			rotation_degrees -=90
 		else:
 			if noise_investigation == 3:
 				noise_investigation = 0
-				rotation = rotation_after_noise
+				#rotation = rotation_after_noise
 			wait = wait_time
 			next_rotation = path[current_point].get_rotation()
 			current_point += 1
@@ -102,7 +109,9 @@ func spotted_something(_body):
 
 
 func _on_noise_detect_area_entered(area):
-	noise_point=area.global_position
-	rotation_after_noise = rotation
-	look_at(noise_point)
-	rotation_degrees -= 90
+	if area.name == 'noise':
+		noise_investigation = 0
+		noise_point=area.global_position
+		rotation_after_noise = rotation
+		look_at(noise_point)
+		rotation_degrees -= 90

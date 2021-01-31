@@ -63,7 +63,7 @@ func _physics_process(_delta):
 	move_and_slide(Vector2(XSpeed, YSpeed))
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		print("I collided with ", collision.collider.name)
+		print_debug("I collided with ", collision.collider.name)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

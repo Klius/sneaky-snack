@@ -8,7 +8,6 @@
 [ext_resource path="res://pause.tscn" type="PackedScene" id=6]
 [ext_resource path="res://audio/fail.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/light/light.png" type="Texture" id=8]
-[ext_resource path="res://assets/noise/noise.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14, 18 )
@@ -68,6 +67,7 @@ rotation = 3.14159
 pause_mode = 1
 position = Vector2( 8, -46 )
 z_index = 1
+collision/safe_margin = 0.014
 
 [node name="Enemy2" parent="." instance=ExtResource( 5 )]
 pause_mode = 1
