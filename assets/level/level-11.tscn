@@ -11,7 +11,7 @@
 [node name="world" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 6 )
-next_level = "res://end.tscn"
+next_level = "res://assets/level/test.tscn"
 this_level = "res://assets/level/level-11.tscn"
 
 [node name="goal" parent="." instance=ExtResource( 5 )]
