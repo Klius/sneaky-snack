@@ -28,7 +28,7 @@ func investigate_noise(delta):
 	if wait >=0:
 		return
 	points = nav.get_simple_path(get_global_position(),noise_point)
-	print(points.size())
+	print("navigation points:"+str(points.size()))
 	if points.size() > 1:
 		var distance = points[1] -get_global_position()
 		var direction = distance.normalized()
@@ -111,6 +111,7 @@ func spotted_something(_body):
 func _on_noise_detect_area_entered(area):
 	if area.name == 'noise':
 		noise_investigation = 0
+		wait = 0.5
 		noise_point=area.global_position
 		rotation_after_noise = rotation
 		look_at(noise_point)
