@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/font/RussoOne-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ScrollContainer.gd" type="Script" id=2]
@@ -27,14 +27,16 @@ outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="StyleBoxTexture" id=3]
+
+[sub_resource type="DynamicFont" id=4]
 size = 32
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
@@ -98,30 +100,32 @@ size_flags_vertical = 3
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer/CenterContainer2"]
 margin_left = 361.0
-margin_top = 37.0
+margin_top = 40.0
 margin_right = 573.0
-margin_bottom = 131.0
+margin_bottom = 128.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BtnStart" type="Button" parent="Main/VBoxContainer/CenterContainer2/HBoxContainer"]
 margin_right = 212.0
-margin_bottom = 45.0
+margin_bottom = 39.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Start"
 
 [node name="BtnSelect" type="Button" parent="Main/VBoxContainer/CenterContainer2/HBoxContainer"]
-margin_top = 49.0
+margin_top = 43.0
 margin_right = 212.0
-margin_bottom = 94.0
+margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Level Select"
 
 [node name="Level" type="MarginContainer" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -146,7 +150,7 @@ scroll_horizontal_enabled = false
 script = ExtResource( 2 )
 
 [node name="GridContainer" type="GridContainer" parent="Level/ScrollContainer"]
-margin_right = 1012.0
+margin_right = 1024.0
 margin_bottom = 818.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -180,7 +184,7 @@ __meta__ = {
 margin_left = 81.0
 margin_right = 159.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Level 01"
 
 [node name="level-02" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
@@ -209,7 +213,7 @@ __meta__ = {
 margin_left = 79.0
 margin_right = 160.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Level 02"
 
 [node name="level-03" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
@@ -238,7 +242,7 @@ __meta__ = {
 margin_left = 79.0
 margin_right = 161.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Level 03"
 
 [node name="level-04" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
@@ -267,7 +271,7 @@ __meta__ = {
 margin_left = 79.0
 margin_right = 161.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Level 04"
 
 [node name="level-05" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
@@ -296,7 +300,7 @@ __meta__ = {
 margin_left = 79.0
 margin_right = 161.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Level 05"
 
 [node name="level-06" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
@@ -326,7 +330,7 @@ __meta__ = {
 margin_left = 79.0
 margin_right = 161.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Level 06"
 
 [node name="level-07" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
@@ -356,7 +360,7 @@ __meta__ = {
 margin_left = 79.0
 margin_right = 160.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Level 07"
 
 [node name="level-08" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
@@ -386,7 +390,7 @@ __meta__ = {
 margin_left = 78.0
 margin_right = 161.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Level 08"
 
 [node name="level-09" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
@@ -415,7 +419,7 @@ __meta__ = {
 margin_left = 79.0
 margin_right = 161.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Level 09"
 
 [node name="level-10" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
@@ -445,7 +449,7 @@ __meta__ = {
 margin_left = 81.0
 margin_right = 159.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Level 10"
 
 [node name="level-11" type="VBoxContainer" parent="Level/ScrollContainer/GridContainer"]
@@ -475,7 +479,7 @@ __meta__ = {
 margin_left = 83.0
 margin_right = 156.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Level 11"
 
 [node name="Sign" type="MarginContainer" parent="."]
@@ -489,7 +493,7 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="Sign"]
 margin_right = 1012.0
 margin_bottom = 55.0
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 6 )
 bbcode_enabled = true
 bbcode_text = "[right]Klius Escarlopini 
 2020 [/right]"
