@@ -55,6 +55,7 @@ func investigate ():
 		noise_point = null
 		noise_investigation = 3
 		look_at(path[current_point].get_global_position())
+		show_alert(false)
 		rotation_degrees -=90
 		
 func _physics_process(delta):
@@ -107,12 +108,21 @@ func spotted_something(_body):
 	pass
 	#emit_signal("spotted")
 
-
+func show_alert(play):
+	if play == true and not $alert.is_playing(): 
+		$alert.visible = true
+		$alert.play()
+	elif play == false:
+		$alert.visible = false
+		$alert.stop()
+		
+		
 func _on_noise_detect_area_entered(area):
 	if area.name == 'noise':
 		noise_investigation = 0
 		wait = 0.5
 		noise_point=area.global_position
 		rotation_after_noise = rotation
+		show_alert(true)
 		look_at(noise_point)
 		rotation_degrees -= 90
