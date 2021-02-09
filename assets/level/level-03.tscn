@@ -2,10 +2,10 @@
 
 [ext_resource path="res://assets/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/level/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/GUI/gui.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/guard/guard.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/goal/goal.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/level/level.gd" type="Script" id=6]
-[ext_resource path="res://pause.tscn" type="PackedScene" id=7]
 
 [node name="world" type="Node2D"]
 pause_mode = 2
@@ -36,6 +36,7 @@ __meta__ = {
 pause_mode = 1
 position = Vector2( -16, 168 )
 z_index = 1
+joystickLeftPath = NodePath("../CanvasLayer/Joystick")
 
 [node name="Points" type="Node2D" parent="."]
 pause_mode = 1
@@ -73,13 +74,11 @@ pause_mode = 1
 position = Vector2( 0, -24 )
 path_name = "Points-B"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="pause" parent="CanvasLayer" instance=ExtResource( 7 )]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="CanvasLayer" parent="." instance=ExtResource( 3 )]
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
 [connection signal="spotted" from="Enemy" to="." method="on_spotted"]
 [connection signal="spotted" from="Enemy-B" to="." method="on_spotted"]
 [connection signal="finished" from="sfx" to="." method="_on_sfx_finished"]
+
+[editable path="CanvasLayer"]

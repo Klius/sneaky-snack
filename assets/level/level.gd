@@ -84,7 +84,11 @@ func get_cell():
 		#print($Navigation/TileMap.tile_set.tile_get_name(cell))
 		if $Navigation/TileMap.tile_set.tile_get_name(cell) in NOISE_FLOORS and noise_timer < 0 :
 			spawn_noise($Player.global_position,"water")
-			
+		if get_node_or_null("TileMap"):
+			if $Navigation/TileMap.tile_set.tile_get_name(cell) == "background":
+				$TileMap.modulate = Color(1.0,1.0,1.0,0.8)
+			else:
+				$TileMap.modulate = Color(1.0,1.0,1.0,1.0)
 func spawn_noise(pos, type):
 	noise_timer = 0.1
 	var new_noise = NOISE.instance()
