@@ -23,4 +23,5 @@ autostart = true
 stream = ExtResource( 2 )
 volume_db = -2.0
 autoplay = true
+bus = "sfx"
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

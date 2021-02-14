@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/level/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://audio/fail.ogg" type="AudioStream" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/GUI/gui.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/guard/guard.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/goal/goal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://audio/sneaky-snack.ogg" type="AudioStream" id=8]
 
 [node name="world" type="Node2D"]
 pause_mode = 2
@@ -67,8 +68,14 @@ collision/safe_margin = 0.014
 [node name="sfx" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 2 )
+bus = "sfx"
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 5 )]
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+bus = "music"
 [connection signal="spotted" from="Enemy" to="." method="on_spotted"]
 [connection signal="finished" from="sfx" to="." method="_on_sfx_finished"]
 
