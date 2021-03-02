@@ -10,15 +10,15 @@ length = 2.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = false
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1, 2 ),
+"times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 531.111, 285.029 ), Vector2( 403.111, 285.029 ) ]
+"values": [ Vector2( 532, 285.029 ), Vector2( 404, 285.029 ) ]
 }
 
 [sub_resource type="Curve" id=2]
@@ -76,7 +76,7 @@ range_item_cull_mask = 2
 
 [node name="Sprite" type="Sprite" parent="."]
 light_mask = 2
-position = Vector2( 493.51, 285.029 )
+position = Vector2( 443.63, 285.029 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 region_enabled = true

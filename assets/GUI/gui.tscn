@@ -15,7 +15,13 @@ extents = Vector2( 32, 32 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Control" type="Control" parent="."]
+[node name="VBoxContainer" parent="pause/CenterContainer" index="0"]
+margin_left = 212.0
+margin_top = 144.0
+margin_right = 812.0
+margin_bottom = 456.0
+
+[node name="touchbtn" type="Control" parent="."]
 anchor_left = 0.887
 anchor_top = 0.1
 anchor_right = 0.93
@@ -26,8 +32,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="Control"]
+[node name="btnpause" type="TouchScreenButton" parent="touchbtn"]
 normal = ExtResource( 5 )
 shape = SubResource( 1 )
 action = "pause"
 visibility_mode = 1
+
+[editable path="pause"]

@@ -8,15 +8,18 @@
 offsets = PoolRealArray( 0, 0.62963, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 0.933594, 1, 0, 1, 0.933333, 1, 0, 0 )
 
-[node name="goal" type="Sprite"]
-texture = ExtResource( 2 )
+[node name="goal" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="goal" type="Area2D" parent="."]
+[node name="goal" type="Sprite" parent="."]
+light_mask = -2147483647
+texture = ExtResource( 2 )
+
+[node name="goal" type="Area2D" parent="goal"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="goal"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="goal/goal"]
 visible = false
 polygon = PoolVector2Array( 0, 8, -8, 8, -8, 0, 0, -8, 8, -8, 8, 0 )
 
@@ -30,4 +33,4 @@ gravity = Vector2( 0, -20 )
 scale_amount = 0.5
 scale_amount_random = 0.28
 color_ramp = SubResource( 1 )
-[connection signal="body_entered" from="goal" to="." method="_on_goal_body_entered"]
+[connection signal="body_entered" from="goal/goal" to="." method="_on_goal_body_entered"]

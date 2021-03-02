@@ -87,7 +87,7 @@ text = "SNEAKY SNACK"
 [node name="RichTextLabel2" type="RichTextLabel" parent="Main/VBoxContainer"]
 margin_top = 128.0
 margin_right = 934.0
-margin_bottom = 253.0
+margin_bottom = 252.0
 rect_min_size = Vector2( 934, 100 )
 rect_pivot_offset = Vector2( -1197, 91 )
 size_flags_horizontal = 3
@@ -99,9 +99,9 @@ text = "Snacking Cat Action"
 scroll_active = false
 
 [node name="TextureRect" type="TextureRect" parent="Main/VBoxContainer"]
-margin_top = 257.0
+margin_top = 256.0
 margin_right = 934.0
-margin_bottom = 381.0
+margin_bottom = 380.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 2 )
@@ -112,7 +112,7 @@ __meta__ = {
 }
 
 [node name="CenterContainer2" type="CenterContainer" parent="Main/VBoxContainer"]
-margin_top = 385.0
+margin_top = 384.0
 margin_right = 934.0
 margin_bottom = 510.0
 size_flags_horizontal = 3
@@ -120,9 +120,9 @@ size_flags_vertical = 3
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer/CenterContainer2"]
 margin_left = 361.0
-margin_top = 15.0
+margin_top = 16.0
 margin_right = 573.0
-margin_bottom = 109.0
+margin_bottom = 110.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

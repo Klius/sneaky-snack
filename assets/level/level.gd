@@ -31,6 +31,7 @@ func _ready():
 	
 func pause():
 	$CanvasLayer/pause.visible = !$CanvasLayer/pause.visible
+	$CanvasLayer/touchbtn.visible = !$CanvasLayer/pause.visible
 	get_tree().paused = $CanvasLayer/pause.visible
 	
 func _process(_delta):
@@ -89,6 +90,7 @@ func get_cell():
 				$TileMap.modulate = Color(1.0,1.0,1.0,0.8)
 			else:
 				$TileMap.modulate = Color(1.0,1.0,1.0,1.0)
+
 func spawn_noise(pos, type):
 	noise_timer = 0.1
 	var new_noise = NOISE.instance()

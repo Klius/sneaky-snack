@@ -13,6 +13,7 @@ var levels = [
 	{"name":"level 10","thumbnail":"10.png","scene":"level-10.tscn"},
 	{"name":"level 11","thumbnail":"11.png","scene":"level-11.tscn"},
 	{"name":"level 12","thumbnail":"12.png","scene":"level-12.tscn"},
+	{"name":"13. Leaking Fountains","thumbnail":"12.png","scene":"level-13.tscn"},
 	{"name":"Test level","thumbnail":"01.png","scene":"test.tscn"}
 	]
 signal back_to_main_menu
