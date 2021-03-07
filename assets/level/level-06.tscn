@@ -82,6 +82,7 @@ max_degrees = -130
 min_degrees = -42
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
+bus = "sfx"
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 7 )]
 [connection signal="spotted" from="Enemy" to="." method="on_spotted"]

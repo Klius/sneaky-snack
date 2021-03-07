@@ -8,7 +8,7 @@ signal exit
 # var a = 2
 # var b = "text"
 
-
+var currentAudio = ""
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -33,5 +33,18 @@ func _on_btnexit_pressed():
 
 func _on_pause_visibility_changed():
 	if visible:
-		$CenterContainer/VBoxContainer/CenterContainer/btncontinue.grab_focus()
+		$centermenu/list/playbtns/btncontinue.grab_focus()
 		
+
+
+func _on_play_audio(name):
+	var audioplayer = get_node(name.to_lower())
+	if not audioplayer.is_playing():
+		audioplayer.play()
+
+
+func _on_stop_audio(name):
+	if name != currentAudio:
+		var audioplayer = get_node(name.to_lower())
+		audioplayer.stop()
+		currentAudio = name

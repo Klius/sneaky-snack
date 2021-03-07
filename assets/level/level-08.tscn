@@ -109,6 +109,7 @@ path_name = "Points-C"
 [node name="CanvasLayer" parent="." instance=ExtResource( 3 )]
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
+bus = "sfx"
 [connection signal="spotted" from="Enemy" to="." method="on_spotted"]
 [connection signal="spotted" from="Enemy-B" to="." method="on_spotted"]
 [connection signal="spotted" from="Enemy-C" to="." method="on_spotted"]

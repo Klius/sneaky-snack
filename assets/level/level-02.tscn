@@ -65,6 +65,7 @@ z_index = 1
 [node name="CanvasLayer" parent="." instance=ExtResource( 3 )]
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
+bus = "sfx"
 [connection signal="spotted" from="Enemy" to="." method="on_spotted"]
 [connection signal="finished" from="sfx" to="." method="_on_sfx_finished"]
 

@@ -43,6 +43,7 @@ pause_mode = 1
 speed = 60
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
+bus = "sfx"
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 4 )]
 [connection signal="spotted" from="doggo" to="." method="on_spotted"]

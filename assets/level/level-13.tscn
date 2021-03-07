@@ -154,6 +154,7 @@ bus = "sfx"
 [node name="CanvasLayer" parent="." instance=ExtResource( 5 )]
 
 [node name="music" type="AudioStreamPlayer" parent="."]
+pause_mode = 1
 stream = ExtResource( 8 )
 autoplay = true
 bus = "music"
