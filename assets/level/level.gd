@@ -19,7 +19,7 @@ func _ready():
 	fail_jingle = preload("res://audio/fail.ogg")
 	NOISE = preload("res://assets/noise/noise.tscn")
 	WATER_FOOTSTEPS = preload("res://assets/water-footstep/water-footstep.tscn")
-	get_tree().paused = false
+	get_tree().paused = true
 # warning-ignore:return_value_discarded
 	get_node("goal").connect("level_complete",self,"on_level_complete")
 # warning-ignore:return_value_discarded
@@ -28,6 +28,7 @@ func _ready():
 	get_node("CanvasLayer/pause").connect("restart",self,"restart_level")
 # warning-ignore:return_value_discarded
 	get_node("CanvasLayer/pause").connect("exit",self,"back_to_menu")
+	get_node("CanvasLayer/level_intro").connect("start_level",self,"start_level")
 	
 func pause():
 	$CanvasLayer/pause.visible = !$CanvasLayer/pause.visible
@@ -45,6 +46,7 @@ func _process(_delta):
 func on_level_complete():
 	$sfx.set_stream(success_jingle)
 	$sfx.play()
+	global.current_level +=1
 	get_tree().paused = true
 	
 func change_level():	
@@ -100,3 +102,7 @@ func spawn_noise(pos, type):
 	add_child(new_noise)
 	add_child(footstep)
 	
+
+
+func start_level():
+	get_tree().paused = false

@@ -1,17 +1,4 @@
 extends Control
-var LEVELS = [
-	"res://assets/level/level-01.tscn",
-	"res://assets/level/level-02.tscn",
-	"res://assets/level/level-03.tscn",
-	"res://assets/level/level-04.tscn",
-	"res://assets/level/level-05.tscn",
-	"res://assets/level/level-06.tscn",
-	"res://assets/level/level-07.tscn",
-	"res://assets/level/level-08.tscn",
-	"res://assets/level/level-09.tscn",
-	"res://assets/level/level-10.tscn",
-	"res://assets/level/level-11.tscn"
-]
 
 # Declare member variables here. Examples:
 # var a = 2

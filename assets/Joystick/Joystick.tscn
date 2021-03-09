@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/Joystick/Joystick.gd" type="Script" id=1]
-[ext_resource path="res://assets/Joystick/joystick_background_cross.png" type="Texture" id=2]
+[ext_resource path="res://assets/Joystick/joystick_background.png" type="Texture" id=2]
 [ext_resource path="res://assets/Joystick/joystick_handle.png" type="Texture" id=3]
 
 [node name="Joystick" type="Control"]
