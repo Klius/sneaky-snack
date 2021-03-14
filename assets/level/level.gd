@@ -29,7 +29,7 @@ func _ready():
 # warning-ignore:return_value_discarded
 	get_node("CanvasLayer/pause").connect("exit",self,"back_to_menu")
 	get_node("CanvasLayer/level_intro").connect("start_level",self,"start_level")
-	
+
 func pause():
 	$CanvasLayer/pause.visible = !$CanvasLayer/pause.visible
 	$CanvasLayer/touchbtn.visible = !$CanvasLayer/pause.visible
@@ -46,8 +46,10 @@ func _process(_delta):
 func on_level_complete():
 	$sfx.set_stream(success_jingle)
 	$sfx.play()
+	global.register_record(get_node("CanvasLayer/countdown").get_time_millis())
 	global.current_level +=1
 	get_tree().paused = true
+	
 	
 func change_level():	
 # warning-ignore:return_value_discarded
@@ -61,7 +63,6 @@ func on_spotted():
 	$sfx.set_stream(fail_jingle)
 	$sfx.play()
 	get_tree().paused = true
-	#restart_level()
 	
 	
 func restart_level():

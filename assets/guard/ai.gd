@@ -10,6 +10,7 @@ export var path_name = "Points"
 var  wait = 0
 var is_waiting = false
 var eps = 1.5
+var new_noise = 0  
 onready var nav = get_parent().get_node("Navigation")
 onready var path = get_parent().get_node(path_name).get_children()
 var current_point = 1
@@ -68,6 +69,7 @@ func _physics_process(delta):
 			if body.get_name() == "Player":
 				emit_signal("spotted")
 	if noise_point != null:
+		new_noise -= delta
 		investigate_noise(delta)
 	else:
 		normal_patrol(delta)
@@ -118,9 +120,10 @@ func show_alert(play):
 		
 		
 func _on_noise_detect_area_entered(area):
-	if area.name == 'noise':
+	if area.name == 'noise' and new_noise <= 0:
+		new_noise = 0.5
 		noise_investigation = 0
-		wait = 0.5
+		wait = 0.2
 		noise_point=area.global_position
 		rotation_after_noise = rotation
 		show_alert(true)

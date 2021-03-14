@@ -29,10 +29,11 @@ func _on_level_select(idx):
 	$wrap/levelDetail.visible = true
 	
 func update_level_detail():
+	var records = global.get_records(selected_level)
 	var preview = load(thumbnail_path+global.levels[selected_level]["thumbnail"])
 	$wrap/levelDetail/containerPrev/preview.set_texture(preview)
 	$wrap/levelDetail/levelName.bbcode_text ="[center]"+global.levels[selected_level]["name"]
-
+	$wrap/levelDetail/records.bbcode_text = records
 	
 func next_level(pos):
 	selected_level +=pos
