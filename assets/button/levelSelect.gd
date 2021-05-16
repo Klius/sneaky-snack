@@ -9,6 +9,7 @@ var button = "res://assets/button/button.tscn"
 var global
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$wrap/HBoxContainer/RichTextLabel.bbcode_text = "[center]"+tr("title_level_select")
 	global = get_node("/root/global")
 	var gridLevels = $wrap/main/levelcenter/levels
 	var idx = 0
@@ -32,7 +33,7 @@ func update_level_detail():
 	var records = global.get_records(selected_level)
 	var preview = load(thumbnail_path+global.levels[selected_level]["thumbnail"])
 	$wrap/levelDetail/containerPrev/preview.set_texture(preview)
-	$wrap/levelDetail/levelName.bbcode_text ="[center]"+global.levels[selected_level]["name"]
+	$wrap/levelDetail/levelName.bbcode_text ="[center]"+tr("lvl_name_"+str(selected_level))
 	$wrap/levelDetail/records.bbcode_text = records
 	
 func next_level(pos):

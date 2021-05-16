@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/button/pause-button1.png" type="Texture" id=1]
 [ext_resource path="res://pause.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/level_intro/level_intro.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/GUI/gui.gd" type="Script" id=6]
 [ext_resource path="res://assets/Timer/timer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/button/resume-button.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
@@ -40,6 +41,24 @@ shape = SubResource( 1 )
 shape_visible = false
 action = "pause"
 visibility_mode = 1
+
+[node name="usebtn" type="Control" parent="."]
+visible = false
+anchor_left = 0.843
+anchor_top = 0.821
+anchor_right = 0.843
+anchor_bottom = 0.821
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 160.768
+margin_bottom = 152.4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnuse" type="TouchScreenButton" parent="usebtn"]
+normal = ExtResource( 8 )
+action = "use"
 
 [node name="level_intro" parent="." instance=ExtResource( 5 )]
 [connection signal="start_level" from="level_intro" to="." method="_on_level_intro_start_level"]

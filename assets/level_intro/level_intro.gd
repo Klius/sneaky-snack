@@ -7,7 +7,7 @@ var global
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	global = get_node("/root/global")
-	set_text(global.levels[global.current_level])
+	set_text(global.current_level)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -19,5 +19,5 @@ func _on_btnstart_pressed():
 	self.visible = false
 
 func set_text(level):
-	$vbox/title.set_bbcode("[center]"+level.name)
-	$vbox/tip.set_bbcode(level.tip)
+	$vbox/title.set_bbcode("[center]"+tr("lvl_name_"+str(level)))
+	$vbox/tip.set_bbcode("[center]"+tr("lvl_hint_"+str(level)))

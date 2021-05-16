@@ -8,12 +8,13 @@ extends Control
 export var bus = ""
 export var maxdb = 0
 export var label = "Music"
+export var controls = "Music"
 signal play_audio 
 signal stop_audio
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$title.text = label
+	$title.text = tr(label)
 	bus = AudioServer.get_bus_index(bus)
 	$HBoxContainer/slider.value = db2linear(AudioServer.get_bus_volume_db(bus))
 
@@ -44,8 +45,9 @@ func _on_slider_value_changed(value):
 
 
 func _on_focus_entered():
-	emit_signal("play_audio",label)
+	emit_signal("play_audio",controls)
 
 
 func _on_focus_exited():
-	emit_signal("stop_audio",label)
+	print ("focus_exited"+controls)
+	emit_signal("stop_audio",controls)

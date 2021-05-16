@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/level/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://audio/fail.ogg" type="AudioStream" id=2]
@@ -7,7 +7,8 @@
 [ext_resource path="res://assets/GUI/gui.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/guard/guard.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/goal/goal.tscn" type="PackedScene" id=7]
-[ext_resource path="res://audio/sneaky-snack.ogg" type="AudioStream" id=8]
+[ext_resource path="res://audio/temaso-tete.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/Box/box.tscn" type="PackedScene" id=9]
 
 [node name="world" type="Node2D"]
 pause_mode = 2
@@ -73,12 +74,18 @@ bus = "sfx"
 [node name="CanvasLayer" parent="." instance=ExtResource( 5 )]
 
 [node name="music" type="AudioStreamPlayer" parent="."]
+pause_mode = 1
 stream = ExtResource( 8 )
 autoplay = true
 bus = "music"
+
+[node name="box" parent="." instance=ExtResource( 9 )]
+position = Vector2( -128.434, 54.4062 )
 [connection signal="spotted" from="Enemy" to="." method="on_spotted"]
 [connection signal="finished" from="sfx" to="." method="_on_sfx_finished"]
 
 [editable path="Player"]
 
 [editable path="CanvasLayer"]
+
+[editable path="CanvasLayer/Joystick"]

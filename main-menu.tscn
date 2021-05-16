@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/font/RussoOne-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/menu-logo.png" type="Texture" id=2]
 [ext_resource path="res://main-menu.gd" type="Script" id=3]
 [ext_resource path="res://assets/menu-background/menu-background2d.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/settings/settings.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/button/levelSelect.tscn" type="PackedScene" id=15]
 
 [sub_resource type="DynamicFont" id=1]
@@ -119,16 +120,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer/CenterContainer2"]
-margin_left = 419.0
-margin_top = 40.0
-margin_right = 514.0
-margin_bottom = 85.0
+margin_left = 359.0
+margin_top = 16.0
+margin_right = 575.0
+margin_bottom = 110.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BtnStart" type="Button" parent="Main/VBoxContainer/CenterContainer2/HBoxContainer"]
 visible = false
-margin_right = 212.0
+margin_right = 162.0
 margin_bottom = 45.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -136,14 +137,28 @@ custom_fonts/font = SubResource( 4 )
 text = "Start"
 
 [node name="BtnSelect" type="Button" parent="Main/VBoxContainer/CenterContainer2/HBoxContainer"]
-margin_right = 95.0
+margin_right = 216.0
 margin_bottom = 45.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 4 )
-text = "Start"
+text = "btn_start"
+
+[node name="BtnSettings" type="Button" parent="Main/VBoxContainer/CenterContainer2/HBoxContainer"]
+margin_top = 49.0
+margin_right = 216.0
+margin_bottom = 94.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 4 )
+text = "btn_settings"
 
 [node name="LevelSelect" parent="." instance=ExtResource( 15 )]
 visible = false
+
+[node name="settings" parent="." instance=ExtResource( 5 )]
+visible = false
 [connection signal="pressed" from="Main/VBoxContainer/CenterContainer2/HBoxContainer/BtnStart" to="." method="_on_BtnStart_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/CenterContainer2/HBoxContainer/BtnSelect" to="." method="_on_BtnSelect_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/CenterContainer2/HBoxContainer/BtnSettings" to="." method="_on_BtnSettings_pressed"]
+[connection signal="settings_to_main_menu" from="settings" to="." method="_on_settings_settings_to_main_menu"]

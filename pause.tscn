@@ -7,7 +7,7 @@
 [ext_resource path="res://pause.gd" type="Script" id=5]
 [ext_resource path="res://assets/audio-controls/audiocontrol.tscn" type="PackedScene" id=6]
 [ext_resource path="res://audio/sfx-test.ogg" type="AudioStream" id=7]
-[ext_resource path="res://audio/sneaky-snack.ogg" type="AudioStream" id=8]
+[ext_resource path="res://audio/temaso-tete.wav" type="AudioStream" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.705882 )
@@ -66,11 +66,11 @@ rect_min_size = Vector2( 600, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CenterContainer4" type="CenterContainer" parent="centermenu/list"]
+[node name="title" type="CenterContainer" parent="centermenu/list"]
 margin_right = 600.0
 margin_bottom = 120.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="centermenu/list/CenterContainer4"]
+[node name="RichTextLabel" type="RichTextLabel" parent="centermenu/list/title"]
 margin_left = 50.0
 margin_right = 550.0
 margin_bottom = 120.0
@@ -92,7 +92,7 @@ margin_right = 298.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 125, 60 )
 custom_fonts/font = SubResource( 3 )
-text = "Restart"
+text = "btn_restart"
 icon = ExtResource( 2 )
 expand_icon = true
 __meta__ = {
@@ -106,7 +106,7 @@ margin_bottom = 60.0
 rect_min_size = Vector2( 125, 60 )
 size_flags_horizontal = 9
 custom_fonts/font = SubResource( 4 )
-text = "Continue"
+text = "btn_continue"
 icon = ExtResource( 3 )
 expand_icon = true
 __meta__ = {
@@ -120,6 +120,8 @@ margin_top = 188.0
 margin_right = 600.0
 margin_bottom = 282.0
 bus = "music"
+label = "title_music"
+controls = "music"
 
 [node name="sfx" parent="centermenu/list" instance=ExtResource( 6 )]
 anchor_right = 0.0
@@ -129,6 +131,7 @@ margin_right = 600.0
 margin_bottom = 380.0
 bus = "sfx"
 label = "SFX"
+controls = "SFX"
 
 [node name="CenterContainer3" type="CenterContainer" parent="centermenu/list"]
 margin_top = 384.0
@@ -145,7 +148,7 @@ rect_min_size = Vector2( 250, 60 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 5 )
-text = "Back to Menu"
+text = "btn_back_menu"
 icon = ExtResource( 4 )
 expand_icon = true
 

@@ -11,6 +11,7 @@ signal exit
 var currentAudio = ""
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$centermenu/list/title/RichTextLabel.bbcode_text = "[center]"+tr("title_pause")
 	pass # Replace with function body.
 
 

@@ -24,3 +24,14 @@ func back_from_level_select():
 	$Main.visible = true
 	$LevelSelect.visible = false
 	$"Main/VBoxContainer/CenterContainer2/HBoxContainer/BtnSelect".grab_focus()
+
+
+func _on_settings_settings_to_main_menu():
+	$Main.visible = true
+	$settings.visible = false
+	$"Main/VBoxContainer/CenterContainer2/HBoxContainer/BtnSettings".grab_focus()
+
+
+func _on_BtnSettings_pressed():
+	$Main.visible = false
+	$settings.visible = true

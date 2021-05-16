@@ -10,6 +10,8 @@ export var path_name = "Points"
 var  wait = 0
 var is_waiting = false
 var eps = 1.5
+var stuck = 1
+var old_pos = Vector2()
 var new_noise = 0  
 onready var nav = get_parent().get_node("Navigation")
 onready var path = get_parent().get_node(path_name).get_children()
@@ -67,7 +69,11 @@ func _physics_process(delta):
 		if ray.is_colliding():
 			var body = ray.get_collider()
 			if body.get_name() == "Player":
-				emit_signal("spotted")
+				if not body.using_box:
+					emit_signal("spotted")
+				if body.using_box and body.velocity != Vector2(0,0):
+					print(body.velocity)
+					emit_signal("spotted")
 	if noise_point != null:
 		new_noise -= delta
 		investigate_noise(delta)
@@ -91,16 +97,25 @@ func normal_patrol(delta):
 			move_and_slide(direction*speed)
 			look_at(path[current_point].get_global_position())
 			rotation_degrees -=90
+			if old_pos == global_position:
+				stuck -= delta
+				if stuck <0:
+					next_point()
+					stuck = 1
+			else:
+				old_pos = global_position
 		else:
 			if noise_investigation == 3:
 				noise_investigation = 0
 				#rotation = rotation_after_noise
 			wait = wait_time
 			next_rotation = path[current_point].get_rotation()
-			current_point += 1
-			if current_point == path.size():
-				current_point = 0
+			next_point()
 
+func next_point():
+	current_point += 1
+	if current_point == path.size():
+		current_point = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

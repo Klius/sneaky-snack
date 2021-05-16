@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/level/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/level/level.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/guard/guard.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/GUI/gui.tscn" type="PackedScene" id=6]
 [ext_resource path="res://audio/fail.ogg" type="AudioStream" id=7]
+[ext_resource path="res://audio/temaso-tete.wav" type="AudioStream" id=8]
 
 [node name="world" type="Node2D"]
 pause_mode = 2
@@ -59,6 +60,12 @@ stream = ExtResource( 7 )
 bus = "sfx"
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 6 )]
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+pause_mode = 1
+stream = ExtResource( 8 )
+autoplay = true
+bus = "music"
 [connection signal="spotted" from="Enemy" to="." method="on_spotted"]
 [connection signal="finished" from="sfx" to="." method="_on_sfx_finished"]
 

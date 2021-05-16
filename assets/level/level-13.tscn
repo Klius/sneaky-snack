@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/GUI/gui.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/guard/guard.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/goal/goal.tscn" type="PackedScene" id=7]
-[ext_resource path="res://audio/sneaky-snack.ogg" type="AudioStream" id=8]
+[ext_resource path="res://audio/temaso-tete.wav" type="AudioStream" id=8]
 
 [node name="world" type="Node2D"]
 pause_mode = 2
@@ -51,7 +51,7 @@ position = Vector2( -176.53, -1.8153 )
 z_index = 1
 joystickLeftPath = NodePath("../CanvasLayer/Joystick")
 
-[node name="Line2D" parent="Player" index="5"]
+[node name="Line2D" parent="Player" index="4"]
 position = Vector2( -0.949844, 0.0501251 )
 
 [node name="Points" type="Node2D" parent="."]
