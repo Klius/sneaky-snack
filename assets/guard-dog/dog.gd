@@ -19,7 +19,11 @@ func _physics_process(delta):
 		if ray.is_colliding():
 			var body = ray.get_collider()
 			if body.get_name() == "Player":
-				emit_signal("spotted")
+				if not body.using_box:
+					emit_signal("spotted")
+				if body.using_box and body.velocity != Vector2(0,0):
+					print(body.velocity)
+					emit_signal("spotted")
 	#PATROL LOGIC
 	wait -=delta
 	if wait >= 0:

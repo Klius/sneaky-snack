@@ -89,7 +89,7 @@ collision_mask = 524289
 rotation = 0.349066
 enabled = true
 cast_to = Vector2( 0, 60 )
-collision_mask = 524289
+collision_mask = 2148007937
 
 [node name="noise_detect" type="Area2D" parent="."]
 

@@ -17,10 +17,10 @@ shortcut = SubResource( 1 )
 size = 70
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 2 )
 
 [node name="settings" type="Control"]
@@ -77,7 +77,7 @@ alignment = 1
 [node name="RichTextLabel" type="RichTextLabel" parent="menu/c_lang"]
 margin_right = 716.0
 margin_bottom = 21.0
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 4 )
 text = "title_language"
 fit_content_height = true
 __meta__ = {
@@ -89,7 +89,7 @@ margin_top = 25.0
 margin_right = 716.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 0, 40 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "lan_aragones"
 items = [ "lan_aragones", null, false, 0, null, "lan_castellano", null, false, 1, null, "lan_catalan", null, false, 2, null, "lan_ingles", null, false, 3, null ]
 selected = 0

@@ -5,6 +5,7 @@ var move_to = Vector2(0,0)
 export var speed = 40
 export var  wait_time:float =  2.0
 export var disabled = false
+export var blind = false
 var next_rotation = 0
 export var path_name = "Points"
 var  wait = 0
@@ -25,6 +26,8 @@ var rotation_after_noise = 0
 func _ready():
 	for ray in rays:
 		ray.add_exception(self)
+		if blind:
+			ray.enabled = false
 		
 func investigate_noise(delta):
 	wait -=delta
@@ -40,6 +43,13 @@ func investigate_noise(delta):
 			move_and_slide(direction*speed)
 			look_at(noise_point)
 			rotation_degrees -=90
+			if is_on_wall():
+				stuck -= delta
+				if stuck <0:
+					stuck = 1
+					investigate()
+			else:
+				stuck = 1
 		else:
 			investigate()
 	elif points.size() == 0:
@@ -97,13 +107,13 @@ func normal_patrol(delta):
 			move_and_slide(direction*speed)
 			look_at(path[current_point].get_global_position())
 			rotation_degrees -=90
-			if old_pos == global_position:
+			if is_on_wall():
 				stuck -= delta
 				if stuck <0:
 					next_point()
 					stuck = 1
 			else:
-				old_pos = global_position
+				stuck = 1
 		else:
 			if noise_investigation == 3:
 				noise_investigation = 0

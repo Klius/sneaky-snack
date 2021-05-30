@@ -18,6 +18,8 @@ func _ready():
 		btn.set_text(str(idx+1))
 		btn.size_flags_vertical = SIZE_EXPAND_FILL
 		btn.connect("pressed",self,"_on_level_select",[idx])
+		if level["playable"] == false:
+			btn.disabled = true
 		gridLevels.add_child(btn)
 		idx +=1
 
@@ -43,6 +45,11 @@ func next_level(pos):
 		selected_level = 0
 	if selected_level < 0 :
 		selected_level = len(global.levels) -1
+		while global.levels[selected_level]["playable"] == false:
+			selected_level -= 1
+	if pos >0 and global.levels[selected_level]["playable"] == false:
+		#wrap around
+		selected_level = 0
 	#update UI
 	update_level_detail()
 

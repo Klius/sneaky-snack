@@ -48,6 +48,8 @@ func on_level_complete():
 	$sfx.play()
 	global.register_record(get_node("CanvasLayer/countdown").get_time_millis())
 	global.current_level +=1
+	global.levels[global.current_level]["playable"] = true
+	global.save_config()
 	get_tree().paused = true
 	
 	
@@ -107,3 +109,4 @@ func spawn_noise(pos, type):
 
 func start_level():
 	get_tree().paused = false
+

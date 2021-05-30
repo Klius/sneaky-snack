@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/level/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://audio/fail.ogg" type="AudioStream" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/goal/goal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://audio/temaso-tete.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/Box/box.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/guard-dog/doggo.tscn" type="PackedScene" id=10]
 
 [node name="world" type="Node2D"]
 pause_mode = 2
@@ -65,6 +66,11 @@ pause_mode = 1
 position = Vector2( 8, -46 )
 z_index = 1
 collision/safe_margin = 0.014
+blind = true
+
+[node name="doggo" parent="." instance=ExtResource( 10 )]
+pause_mode = 1
+position = Vector2( -131.662, -23.3085 )
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
@@ -82,6 +88,7 @@ bus = "music"
 [node name="box" parent="." instance=ExtResource( 9 )]
 position = Vector2( -128.434, 54.4062 )
 [connection signal="spotted" from="Enemy" to="." method="on_spotted"]
+[connection signal="spotted" from="doggo" to="." method="on_spotted"]
 [connection signal="finished" from="sfx" to="." method="_on_sfx_finished"]
 
 [editable path="Player"]

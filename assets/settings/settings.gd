@@ -38,4 +38,5 @@ func _on_stop_audio(name):
 
 
 func _on_btn_back_pressed():
+	global.save_config()
 	emit_signal("settings_to_main_menu")
