@@ -18,6 +18,10 @@ _global_script_class_icons={
 "Joystick": ""
 }
 
+[OS]
+
+2d/gles2_use_nvidia_rect_flicker_workaround=true
+
 [application]
 
 config/name="Sneaky Snack"
@@ -28,6 +32,10 @@ config/windows_native_icon="res://builds/windows/sneaky_snack_icon.ico"
 [autoload]
 
 global="*res://global.gd"
+
+[debug]
+
+settings/fps/force_fps=30
 
 [display]
 
@@ -126,9 +134,18 @@ file_logging/enable_file_logging=true
 
 quality/driver/fallback_to_gles2=true
 quality/2d/use_nvidia_rect_flicker_workaround=true
-quality/intended_usage/framebuffer_allocation.mobile=2
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
 quality/2d/use_pixel_snap=true
 vram_compression/import_etc=true
+quality/directional_shadow/size.mobile=512
+quality/shadow_atlas/size.mobile=512
 quality/shading/force_vertex_shading=true
-quality/depth_prepass/enable=false
+gles2/compatibility/disable_half_float=true
+quality/subsurface_scattering/quality=0
 environment/default_clear_color=Color( 0.278431, 0.176471, 0.235294, 1 )
+quality/2d/gles2_use_nvidia_rect_flicker_workaround=true
+
+[sync]
+
+2d/gles2_use_nvidia_rect_flicker_workaround=false

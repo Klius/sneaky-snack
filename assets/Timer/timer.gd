@@ -40,6 +40,7 @@ func update_display():
 		secs = "0"+secs
 	time_string = "[i]"+mins+":"+secs+".[b]"+millis+"[/b][/i]"
 	$label_timer.bbcode_text = time_string
+	$fps.bbcode_text = "[b]"+str(Engine.get_frames_per_second())+"[/b]"
 
 func get_time_millis():
 	var mills = floor(MILLIS*100)

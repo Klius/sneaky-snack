@@ -1,0 +1,164 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/font/RussoOne-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/menu-logo.png" type="Texture" id=2]
+[ext_resource path="res://main-menu.gd" type="Script" id=3]
+[ext_resource path="res://assets/menu-background/menu-background2d.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/settings/settings.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/button/levelSelect.tscn" type="PackedScene" id=15]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 72
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" parent="." instance=ExtResource( 4 )]
+
+[node name="Sign" type="MarginContainer" parent="."]
+anchor_top = 0.907
+anchor_right = 0.989
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sign"]
+margin_right = 1012.0
+margin_bottom = 55.0
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[right]Klius Escarlopini 
+2020 [/right]"
+text = "Klius Escarlopini 
+2020 "
+
+[node name="Main" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 45.0
+margin_top = 45.0
+margin_right = -45.0
+margin_bottom = -45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+margin_right = 934.0
+margin_bottom = 510.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBoxContainer"]
+margin_right = 934.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 934, 100 )
+rect_pivot_offset = Vector2( -1197, 91 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]SNEAKY SNACK[/center]"
+text = "SNEAKY SNACK"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Main/VBoxContainer"]
+margin_top = 128.0
+margin_right = 934.0
+margin_bottom = 252.0
+rect_min_size = Vector2( 934, 100 )
+rect_pivot_offset = Vector2( -1197, 91 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[center]Snacking Cat Action[/center]"
+text = "Snacking Cat Action"
+scroll_active = false
+
+[node name="TextureRect" type="TextureRect" parent="Main/VBoxContainer"]
+margin_top = 256.0
+margin_right = 934.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer2" type="CenterContainer" parent="Main/VBoxContainer"]
+margin_top = 384.0
+margin_right = 934.0
+margin_bottom = 510.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer/CenterContainer2"]
+margin_left = 359.0
+margin_top = 16.0
+margin_right = 575.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BtnStart" type="Button" parent="Main/VBoxContainer/CenterContainer2/HBoxContainer"]
+visible = false
+margin_right = 162.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 4 )
+text = "Start"
+
+[node name="BtnSelect" type="Button" parent="Main/VBoxContainer/CenterContainer2/HBoxContainer"]
+margin_right = 216.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 4 )
+text = "btn_start"
+
+[node name="BtnSettings" type="Button" parent="Main/VBoxContainer/CenterContainer2/HBoxContainer"]
+margin_top = 49.0
+margin_right = 216.0
+margin_bottom = 94.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 4 )
+text = "btn_settings"
+
+[node name="LevelSelect" parent="." instance=ExtResource( 15 )]
+visible = false
+
+[node name="settings" parent="." instance=ExtResource( 5 )]
+visible = false
+[connection signal="pressed" from="Main/VBoxContainer/CenterContainer2/HBoxContainer/BtnStart" to="." method="_on_BtnStart_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/CenterContainer2/HBoxContainer/BtnSelect" to="." method="_on_BtnSelect_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/CenterContainer2/HBoxContainer/BtnSettings" to="." method="_on_BtnSettings_pressed"]
+[connection signal="settings_to_main_menu" from="settings" to="." method="_on_settings_settings_to_main_menu"]
