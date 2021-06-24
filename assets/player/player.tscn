@@ -1,15 +1,20 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/player/player.png" type="Texture" id=1]
 [ext_resource path="res://assets/player/player.gd" type="Script" id=2]
 [ext_resource path="res://assets/player/player-back.png" type="Texture" id=3]
 [ext_resource path="res://assets/Box/box.png" type="Texture" id=4]
+[ext_resource path="res://assets/Box/box-side.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.45952
 height = 6.30633
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
@@ -21,29 +26,34 @@ animations = [ {
 "name": "back",
 "speed": 5.0
 }, {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "side_box",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "in_box",
 "speed": 5.0
 } ]
 
-[sub_resource type="OccluderPolygon2D" id=3]
+[sub_resource type="OccluderPolygon2D" id=4]
 polygon = PoolVector2Array( 4.00868, 5.08913, 4.00868, 1.10312, 3.01218, -0.55772, 2.84609, -6.37065, 1.84959, -6.53674, 1.6835, -5.04198, -0.64167, -5.37415, -0.973839, -6.70282, -1.97034, -6.37065, -2.30251, 0.77095, -4.12943, 0.604866, -3.79726, -2.88289, -5.79026, -2.88289, -5.95635, 2.43179, -1.80425, 6.4178, 3.34435, 6.4178 )
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0, 0.494505, 1 )
 colors = PoolColorArray( 0.996078, 0.992157, 0.992157, 0, 0.027451, 0.92549, 0.4, 0.52549, 0.16449, 0, 0.300781, 1 )
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=7]
 radius = 11.9858
 
-[sub_resource type="OccluderPolygon2D" id=7]
+[sub_resource type="OccluderPolygon2D" id=8]
 polygon = PoolVector2Array( -6.94631, -7.40166, 6.95914, -7.36856, 7.0148, 7.36962, -6.98565, 7.4109 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 7, 7.435 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
@@ -59,33 +69,34 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="sprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 2 )
+frames = SubResource( 3 )
 animation = "front"
 
 [node name="cat_occluder" type="LightOccluder2D" parent="."]
-occluder = SubResource( 3 )
+occluder = SubResource( 4 )
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PoolVector2Array( 0, 0, 0, 0 )
-width_curve = SubResource( 4 )
+width_curve = SubResource( 5 )
 default_color = Color( 0.223529, 0.286275, 0.615686, 1 )
-gradient = SubResource( 5 )
+gradient = SubResource( 6 )
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="use_zone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_zone"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="box_occluder" type="LightOccluder2D" parent="."]
 visible = false
 position = Vector2( 0.083, 0.5 )
-occluder = SubResource( 7 )
+occluder = SubResource( 8 )
 
 [node name="box_shape" type="CollisionShape2D" parent="."]
 position = Vector2( 0.083, 0.5 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 disabled = true
+
 [connection signal="area_entered" from="use_zone" to="." method="_on_use_area_entered"]
 [connection signal="area_exited" from="use_zone" to="." method="_on_use_zone_area_exited"]

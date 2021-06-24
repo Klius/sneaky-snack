@@ -56,6 +56,11 @@ func _process(_delta):
 			else:
 				$sprite.flip_h = false
 				$cat_occluder.scale.x = 1
+		elif using_box:
+			if abs(XSpeed)>abs(YSpeed):
+				$sprite.animation = "side_box"
+			else:
+				$sprite.animation = "in_box"
 	else:
 		if Input.is_action_pressed("up"):
 			YSpeed = -speed
