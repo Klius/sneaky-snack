@@ -99,4 +99,5 @@ rect_min_size = Vector2( 280, 50 )
 custom_fonts/font = SubResource( 3 )
 text = "Back to Menu"
 icon = ExtResource( 2 )
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/back" to="." method="_on_back_pressed"]

@@ -1,7 +1,6 @@
 extends Node2D
 
-export var next_level = "res://assets/level/level-02.tscn"
-export var this_level = "res://assets/level/level-01.tscn"
+var level_prefix="res://assets/level/"
 var NOISE_FLOORS = ["Water"]
 var NOISE = null
 var WATER_FOOTSTEPS = null
@@ -55,7 +54,8 @@ func on_level_complete():
 	
 func change_level():	
 # warning-ignore:return_value_discarded
-	get_tree().change_scene(next_level)
+	var level = level_prefix+global.levels[global.current_level]["scene"]
+	get_tree().change_scene(level)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -69,7 +69,8 @@ func on_spotted():
 	
 func restart_level():
 # warning-ignore:return_value_discarded
-	get_tree().change_scene(this_level)
+	var level = level_prefix+global.levels[global.current_level]["scene"]
+	get_tree().change_scene(level)
 
 
 func back_to_menu():

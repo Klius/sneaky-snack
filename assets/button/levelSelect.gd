@@ -14,14 +14,17 @@ func _ready():
 	var gridLevels = $wrap/main/levelcenter/levels
 	var idx = 0
 	for level in global.levels:
-		var btn = load(button).instance()
-		btn.set_text(str(idx+1))
-		btn.size_flags_vertical = SIZE_EXPAND_FILL
-		btn.connect("pressed",self,"_on_level_select",[idx])
-		if level["playable"] == false:
-			btn.disabled = true
-		gridLevels.add_child(btn)
-		idx +=1
+		if level["name"] != "ending":
+			var btn = load(button).instance()
+			btn.set_text(str(idx+1))
+			btn.size_flags_vertical = SIZE_EXPAND_FILL
+			btn.connect("pressed",self,"_on_level_select",[idx])
+			if level["playable"] == false:
+				btn.disabled = true
+			gridLevels.add_child(btn)
+			idx +=1
+		else:
+			idx+=1
 
 	# Replace with function body.
 func _on_level_select(idx):
