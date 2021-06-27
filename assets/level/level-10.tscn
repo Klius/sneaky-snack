@@ -11,8 +11,6 @@
 [node name="world" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 6 )
-next_level = "res://assets/level/level-11.tscn"
-this_level = "res://assets/level/level-10.tscn"
 
 [node name="goal" parent="." instance=ExtResource( 5 )]
 pause_mode = 1
@@ -120,6 +118,7 @@ min_degrees = -1
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
 bus = "sfx"
+
 [connection signal="spotted" from="Enemy" to="." method="on_spotted"]
 [connection signal="spotted" from="Enemy-B" to="." method="on_spotted"]
 [connection signal="spotted" from="doggo" to="." method="on_spotted"]
@@ -127,3 +126,4 @@ bus = "sfx"
 [connection signal="finished" from="sfx" to="." method="_on_sfx_finished"]
 
 [editable path="CanvasLayer"]
+[editable path="CanvasLayer/pause"]

@@ -119,3 +119,7 @@ func _on_use_zone_area_exited(area):
 		if using_box == false :
 			emit_signal("can_use",false)
 		near_box = false
+
+
+func _on_camera_zoom_animation_finished(anim_name):
+	pass # Replace with function body.

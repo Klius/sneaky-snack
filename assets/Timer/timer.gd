@@ -22,7 +22,7 @@ func _physics_process(delta):
 	
 func add_milliseconds(delta):
 	MILLIS += delta
-	print(MILLIS*100)
+	#print(MILLIS*100)
 	if MILLIS>=1:
 		SECONDS +=1
 		MILLIS = 0

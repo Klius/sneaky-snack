@@ -66,9 +66,10 @@ pause_mode = 1
 stream = ExtResource( 8 )
 autoplay = true
 bus = "music"
+
 [connection signal="spotted" from="Enemy" to="." method="on_spotted"]
 [connection signal="finished" from="sfx" to="." method="_on_sfx_finished"]
 
 [editable path="Player"]
-
 [editable path="CanvasLayer"]
+[editable path="CanvasLayer/pause"]

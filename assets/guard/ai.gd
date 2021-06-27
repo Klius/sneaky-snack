@@ -34,7 +34,7 @@ func investigate_noise(delta):
 	if wait >=0:
 		return
 	points = nav.get_simple_path(get_global_position(),noise_point)
-	print("navigation points:"+str(points.size()))
+	#print("navigation points:"+str(points.size()))
 	if points.size() > 1:
 		var distance = points[1] -get_global_position()
 		var direction = distance.normalized()
@@ -82,7 +82,7 @@ func _physics_process(delta):
 				if not body.using_box:
 					emit_signal("spotted")
 				if body.using_box and body.velocity != Vector2(0,0):
-					print(body.velocity)
+					#print(body.velocity)
 					emit_signal("spotted")
 	if noise_point != null:
 		new_noise -= delta

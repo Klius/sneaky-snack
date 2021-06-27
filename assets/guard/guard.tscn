@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/guard/ai.gd" type="Script" id=1]
 [ext_resource path="res://assets/guard/guard.png" type="Texture" id=2]
 [ext_resource path="res://assets/guard/light-export.png" type="Texture" id=3]
 [ext_resource path="res://assets/guard/question-sheet.png" type="Texture" id=4]
+[ext_resource path="res://assets/guard/light.png" type="Texture" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -37,6 +38,13 @@ scale = Vector2( 1.00318, 0.97852 )
 z_index = 4096
 frames = SubResource( 3 )
 
+[node name="vision" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.294118, 0.968627, 0.478431, 0.368627 )
+position = Vector2( 0, 32.0723 )
+z_as_relative = false
+texture = ExtResource( 5 )
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
@@ -61,6 +69,9 @@ color = Color( 0.172549, 0.811765, 0.466667, 0.47451 )
 polygon = PoolVector2Array( 0, 0, 24, 64, -24, 64 )
 
 [node name="rays" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="RayCast2D" type="RayCast2D" parent="rays"]
 enabled = true
@@ -92,8 +103,14 @@ cast_to = Vector2( 0, 60 )
 collision_mask = 2148007937
 
 [node name="noise_detect" type="Area2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="noise_detect"]
 shape = SubResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="area_entered" from="noise_detect" to="." method="_on_noise_detect_area_entered"]

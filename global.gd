@@ -60,7 +60,7 @@ var current_level = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_data()
-
+#	pass
 func get_record_timestamp(millis):
 	var secs = 0
 	var mins = 0
@@ -114,12 +114,19 @@ func register_record(millis):
 			break
 		idx +=1
 	return pos
+func get_audio_level(bus_name):
+	var level = AudioServer.get_bus_volume_db(AudioServer.get_bus_index(bus_name))
+	return str(level)
 ### TODO save audio levels
 func save_config():
+	var music = get_audio_level("music")
+	var sfx = get_audio_level("sfx")
 	var save_data = {
 		"levels":levels,
 		"records":records,
-		"locale": TranslationServer.get_locale()
+		"locale": TranslationServer.get_locale(),
+		"music":music,
+		"sfx":sfx
 	}
 	var save_game = File.new()
 	save_game.open("user://savegame.save", File.WRITE)
@@ -135,4 +142,6 @@ func load_data():
 	levels = saved_data["levels"]
 	records = saved_data["records"]
 	TranslationServer.set_locale(saved_data["locale"])
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("music"),float(saved_data["music"]))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("sfx"),float(saved_data["sfx"]))
 	save_game.close()

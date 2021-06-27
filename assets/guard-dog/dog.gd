@@ -22,7 +22,7 @@ func _physics_process(delta):
 				if not body.using_box:
 					emit_signal("spotted")
 				if body.using_box and body.velocity != Vector2(0,0):
-					print(body.velocity)
+					#print(body.velocity)
 					emit_signal("spotted")
 	#PATROL LOGIC
 	wait -=delta

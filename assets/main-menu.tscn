@@ -75,7 +75,7 @@ margin_bottom = 510.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Main/VBoxContainer"]
 margin_right = 934.0
-margin_bottom = 124.0
+margin_bottom = 133.0
 rect_min_size = Vector2( 934, 100 )
 rect_pivot_offset = Vector2( -1197, 91 )
 size_flags_horizontal = 3
@@ -86,13 +86,12 @@ bbcode_text = "[center]SNEAKY SNACK[/center]"
 text = "SNEAKY SNACK"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Main/VBoxContainer"]
-margin_top = 128.0
+margin_top = 137.0
 margin_right = 934.0
-margin_bottom = 252.0
-rect_min_size = Vector2( 934, 100 )
+margin_bottom = 236.904
+rect_min_size = Vector2( 934, 99.904 )
 rect_pivot_offset = Vector2( -1197, 91 )
 size_flags_horizontal = 3
-size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[center]Snacking Cat Action[/center]"
@@ -100,9 +99,9 @@ text = "Snacking Cat Action"
 scroll_active = false
 
 [node name="TextureRect" type="TextureRect" parent="Main/VBoxContainer"]
-margin_top = 256.0
+margin_top = 240.0
 margin_right = 934.0
-margin_bottom = 380.0
+margin_bottom = 373.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 2 )
@@ -113,7 +112,7 @@ __meta__ = {
 }
 
 [node name="CenterContainer2" type="CenterContainer" parent="Main/VBoxContainer"]
-margin_top = 384.0
+margin_top = 377.0
 margin_right = 934.0
 margin_bottom = 510.0
 size_flags_horizontal = 3
@@ -121,9 +120,9 @@ size_flags_vertical = 3
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer/CenterContainer2"]
 margin_left = 359.0
-margin_top = 16.0
+margin_top = 19.0
 margin_right = 575.0
-margin_bottom = 110.0
+margin_bottom = 113.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -158,6 +157,7 @@ visible = false
 
 [node name="settings" parent="." instance=ExtResource( 5 )]
 visible = false
+
 [connection signal="pressed" from="Main/VBoxContainer/CenterContainer2/HBoxContainer/BtnStart" to="." method="_on_BtnStart_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/CenterContainer2/HBoxContainer/BtnSelect" to="." method="_on_BtnSelect_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/CenterContainer2/HBoxContainer/BtnSettings" to="." method="_on_BtnSettings_pressed"]

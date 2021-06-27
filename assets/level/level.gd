@@ -27,8 +27,10 @@ func _ready():
 	get_node("CanvasLayer/pause").connect("restart",self,"restart_level")
 # warning-ignore:return_value_discarded
 	get_node("CanvasLayer/pause").connect("exit",self,"back_to_menu")
-	get_node("CanvasLayer/level_intro").connect("start_level",self,"start_level")
-
+	get_node("CanvasLayer/level_intro").connect("start_level",self,"show_goal")
+	get_node("goal/Camera2D/AnimationPlayer").connect("animation_finished",self,"start_level")
+	get_node("Player/Camera2D/Animation").connect("animation_finished",self,"start_level")
+	$Player/Camera2D.set_position($goal/Camera2D.position)
 func pause():
 	$CanvasLayer/pause.visible = !$CanvasLayer/pause.visible
 	$CanvasLayer/touchbtn.visible = !$CanvasLayer/pause.visible
@@ -107,7 +109,11 @@ func spawn_noise(pos, type):
 	add_child(footstep)
 	
 
-
-func start_level():
-	get_tree().paused = false
-
+func show_goal():
+	$goal/Camera2D/AnimationPlayer.play("zoom_out")
+		
+func start_level(anim_name):
+	if anim_name == "zoom_out":
+		$Player/Camera2D/Animation.play("zoom_in")
+	if anim_name == "zoom_in":
+		get_tree().paused = false
