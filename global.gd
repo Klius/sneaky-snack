@@ -35,6 +35,7 @@ var levels = [
 	{"name":"level 12","playable": false,"thumbnail":"12.png","scene":"level-12.tscn"},
 	{"name":"13. Leaking Fountains","playable": false,"thumbnail":"12.png","scene":"level-13.tscn"},
 	{"name":"14. Leaking Fountains","playable": false,"thumbnail":"12.png","scene":"level-14.tscn"},
+	{"name":"15. Holes","playable": false,"thumbnail":"12.png","scene":"level-15.tscn"},
 	{"name":"Test level", "playable": true, "thumbnail":"01.png", "scene":"test.tscn"},
 	{"name":"ending","playable": false,"thumbnail":"12.png","scene":"end.tscn"}
 ]

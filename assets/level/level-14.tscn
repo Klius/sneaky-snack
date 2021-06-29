@@ -139,6 +139,7 @@ autoplay = true
 bus = "music"
 
 [node name="box" parent="." instance=ExtResource( 9 )]
+visible = false
 position = Vector2( -231.864, 104.019 )
 
 [connection signal="spotted" from="Enemy" to="." method="on_spotted"]

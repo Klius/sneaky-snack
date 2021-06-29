@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/level/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://audio/fail.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/level/level.gd" type="Script" id=3]
+[ext_resource path="res://assets/player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/GUI/gui.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/guard/guard.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/goal/goal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://audio/temaso-tete.wav" type="AudioStream" id=8]
+
+[node name="world" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 3 )
+
+[node name="goal" parent="." instance=ExtResource( 7 )]
+pause_mode = 1
+position = Vector2( -127.917, -24 )
+z_index = 1
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 524288
+collision_mask = 524288
+format = 1
+tile_data = PoolIntArray( 65531, 1610612738, 0, 65532, 1610612738, 0, 65533, 1610612738, 0, 65534, 1610612738, 0, 65535, 1610612738, 0, 0, 1610612738, 0, 1, 1610612738, 0, 2, 1610612738, 0, 3, 1610612738, 0, 4, 1610612738, 0, 65541, 1610612738, 0, 262137, -1610612723, 0, 327670, -1073741811, 0, 589816, 1610612749, 0 )
+
+[node name="Navigation" type="Navigation2D" parent="."]
+pause_mode = 1
+
+[node name="TileMap" type="TileMap" parent="Navigation"]
+pause_mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -196619, 1610612740, 0, -196618, 1610612740, 0, -196617, 1610612740, 0, -196616, 1610612740, 0, -196615, 1610612740, 0, -196614, 1610612740, 0, -131083, 1610612740, 0, -131082, 1610612740, 0, -131081, 1610612740, 0, -131080, 1610612740, 0, -131079, 1610612740, 0, -131078, 1610612740, 0, -65547, 1610612740, 0, -65546, 1610612740, 0, -65545, 1610612737, 8, -65544, 1610612737, 8, -65543, 1610612740, 0, -65542, 1610612740, 0, -11, 1610612740, 0, -10, 4, 0, -9, 1610612737, 8, -8, 1610612737, 8, -7, 4, 0, -6, 4, 0, 65525, 1610612740, 0, 65526, 4, 0, 65527, 1, 8, 65528, 1, 8, 65529, 1610612740, 0, 65530, 1610612740, 0, 131061, 1610612740, 0, 131062, 4, 0, 131063, 1, 8, 131064, 1, 8, 131065, 1610612740, 0, 131066, 1610612740, 0, 196597, 4, 0, 196598, 4, 0, 196599, 1, 8, 196600, 1, 8, 196601, 1610612740, 0, 196602, 1610612740, 0, 262133, 1610612740, 0, 262134, 1610612740, 0, 262135, 1, 8, 262136, 1, 8, 262137, 1610612738, 0, 262138, 1610612740, 0, 327669, 1610612740, 0, 327670, 1610612738, 0, 327671, 1, 8, 327672, 1, 8, 327673, 1610612740, 0, 327674, 1610612740, 0, 393205, 1610612740, 0, 393206, 4, 0, 393207, 1, 8, 393208, 1, 8, 393209, 1610612740, 0, 393210, 1610612740, 0, 458741, 1610612740, 0, 458742, 4, 0, 458743, 1, 8, 458744, 1, 8, 458745, 1610612740, 0, 458746, 1610612740, 0, 524277, 1610612740, 0, 524278, 4, 0, 524279, 1, 8, 524280, 1, 8, 524281, 1610612740, 0, 524282, 1610612740, 0, 589813, 1610612740, 0, 589814, 4, 0, 589815, 1610612740, 0, 589816, -1073741822, 0, 589817, 1610612740, 0, 589818, 1610612740, 0, 655349, 1610612740, 0, 655350, 4, 0, 655351, 4, 0, 655352, 4, 0, 655353, 4, 0, 655354, 1610612740, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
+position = Vector2( -128, 112.019 )
+z_index = 1
+joystickLeftPath = NodePath("../CanvasLayer/Joystick")
+
+[node name="Points" type="Node2D" parent="."]
+pause_mode = 1
+position = Vector2( 8, -46 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Position2D" type="Position2D" parent="Points"]
+position = Vector2( -135.917, 46 )
+rotation = 3.14159
+
+[node name="Position2D2" type="Position2D" parent="Points"]
+position = Vector2( -136, 158.828 )
+rotation = 3.14159
+
+[node name="Enemy" parent="." instance=ExtResource( 6 )]
+pause_mode = 1
+position = Vector2( -128, 0 )
+z_index = 1
+collision/safe_margin = 0.014
+wait_time = 1.0
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 2 )
+bus = "sfx"
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 5 )]
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+pause_mode = 1
+stream = ExtResource( 8 )
+autoplay = true
+bus = "music"
+
+[connection signal="spotted" from="Enemy" to="." method="on_spotted"]
+[connection signal="finished" from="sfx" to="." method="_on_sfx_finished"]
