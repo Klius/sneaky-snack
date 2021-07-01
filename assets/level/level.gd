@@ -49,14 +49,13 @@ func on_level_complete():
 	$sfx.play()
 	global.register_record(get_node("CanvasLayer/countdown").get_time_millis())
 	global.current_level +=1
-	global.levels[global.current_level]["playable"] = true
-	global.save_config()
+	global.unlock_next_level()
 	get_tree().paused = true
 	
 	
 func change_level():	
 # warning-ignore:return_value_discarded
-	var level = level_prefix+global.levels[global.current_level]["scene"]
+	var level = level_prefix+global.levels[global.current_difficulty][global.current_level]["scene"]
 	get_tree().change_scene(level)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -71,7 +70,7 @@ func on_spotted():
 	
 func restart_level():
 # warning-ignore:return_value_discarded
-	var level = level_prefix+global.levels[global.current_level]["scene"]
+	var level = level_prefix+global.levels[global.current_difficulty][global.current_level]["scene"]
 	get_tree().change_scene(level)
 
 
@@ -117,3 +116,4 @@ func start_level(anim_name):
 		$Player/Camera2D/Animation.play("zoom_in")
 	if anim_name == "zoom_in":
 		get_tree().paused = false
+		$CanvasLayer.on_level_intro_start_level()

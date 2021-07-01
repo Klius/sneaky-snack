@@ -10,13 +10,12 @@ extends CanvasLayer
 func _ready():
 	get_node("/root/world/Player").connect("can_use",self,"toogle_use_btn")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
 
-func _on_level_intro_start_level():
+func on_level_intro_start_level():
 	$Joystick.set_visible(true)
 	$touchbtn.set_visible(true)
 

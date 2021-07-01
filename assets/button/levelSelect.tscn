@@ -124,24 +124,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer2" type="CenterContainer" parent="wrap/main"]
+[node name="difCenter" type="CenterContainer" parent="wrap/main"]
 margin_right = 320.0
 margin_bottom = 500.0
 rect_min_size = Vector2( 320, 0 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="wrap/main/CenterContainer2"]
-margin_left = 118.0
-margin_top = 226.0
-margin_right = 202.0
-margin_bottom = 273.0
+[node name="difList" type="VBoxContainer" parent="wrap/main/difCenter"]
+margin_left = 92.0
+margin_top = 163.0
+margin_right = 228.0
+margin_bottom = 336.0
 custom_constants/separation = 16
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" parent="wrap/main/CenterContainer2/VBoxContainer" instance=ExtResource( 3 )]
-margin_right = 84.4843
+[node name="btn_easy" parent="wrap/main/difCenter/difList" instance=ExtResource( 3 )]
+margin_right = 136.0
 margin_bottom = 47.3182
+
+[node name="btn_medium" parent="wrap/main/difCenter/difList" instance=ExtResource( 3 )]
+margin_top = 63.0
+margin_right = 136.484
+margin_bottom = 110.318
+text = "Medium"
+
+[node name="btn_hard" parent="wrap/main/difCenter/difList" instance=ExtResource( 3 )]
+margin_top = 126.0
+margin_right = 136.0
+margin_bottom = 173.318
+text = "Hard"
 
 [node name="levelcenter" type="CenterContainer" parent="wrap/main"]
 margin_left = 324.0
@@ -149,7 +161,27 @@ margin_right = 983.0
 margin_bottom = 500.0
 size_flags_horizontal = 3
 
-[node name="levels" type="GridContainer" parent="wrap/main/levelcenter"]
+[node name="easy" type="GridContainer" parent="wrap/main/levelcenter"]
+margin_left = 79.0
+margin_right = 579.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 500, 500 )
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 4
+
+[node name="medium" type="GridContainer" parent="wrap/main/levelcenter"]
+visible = false
+margin_left = 79.0
+margin_right = 579.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 500, 500 )
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 4
+
+[node name="hard" type="GridContainer" parent="wrap/main/levelcenter"]
+visible = false
 margin_left = 79.0
 margin_right = 579.0
 margin_bottom = 500.0
@@ -263,8 +295,12 @@ margin_right = 570.484
 margin_bottom = 47.3182
 shortcut = SubResource( 13 )
 text = "btn_start"
+
 [connection signal="pressed" from="wrap/HBoxContainer/btn_back" to="." method="_on_btn_back_pressed"]
 [connection signal="visibility_changed" from="wrap/main" to="." method="_on_main_visibility_changed"]
+[connection signal="pressed" from="wrap/main/difCenter/difList/btn_easy" to="." method="_on_btn_difficulty_pressed" binds= [ "easy" ]]
+[connection signal="pressed" from="wrap/main/difCenter/difList/btn_medium" to="." method="_on_btn_difficulty_pressed" binds= [ "medium" ]]
+[connection signal="pressed" from="wrap/main/difCenter/difList/btn_hard" to="." method="_on_btn_difficulty_pressed" binds= [ "hard" ]]
 [connection signal="pressed" from="wrap/levelDetail/containerPrev/CenterContainer2/back_level" to="." method="next_level" binds= [ -1 ]]
 [connection signal="pressed" from="wrap/levelDetail/containerPrev/CenterContainer/next_level" to="." method="next_level" binds= [ 1 ]]
 [connection signal="pressed" from="wrap/levelDetail/CenterContainer/btnStart" to="." method="_on_btnStart_pressed"]

@@ -62,6 +62,4 @@ action = "use"
 
 [node name="level_intro" parent="." instance=ExtResource( 5 )]
 
-[connection signal="start_level" from="level_intro" to="." method="_on_level_intro_start_level"]
-
 [editable path="pause"]
